@@ -13,8 +13,7 @@
         <pubDate>Sun, 10 Aug 2025 23:31:11 +0800</pubDate>
         
         <guid>http://localhost:1313/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/</guid>
-        <description>&lt;img src="http://localhost:1313/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image-3.png" alt="Featured image of post webgl渲染水面波浪" /&gt;&lt;p&gt;借助webglAPI，编写glsl着色器代码进行水面模拟的渲染。&lt;/p&gt;
-&lt;h2 id=&#34;场景中物体类的编写&#34;&gt;场景中物体类的编写
+        <description>&lt;img src="http://localhost:1313/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image-3.png" alt="Featured image of post webgl渲染水面波浪" /&gt;&lt;h2 id=&#34;场景中物体类的编写&#34;&gt;场景中物体类的编写
 &lt;/h2&gt;&lt;h3 id=&#34;相机&#34;&gt;相机
 &lt;/h3&gt;&lt;p&gt;定义相机类，包含其位置，观察位置，向上方向的属性。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -614,7 +613,7 @@ webgl中面按三角面渲染，顶点数据会有重复顶点。其实可以通
 &lt;/h2&gt;&lt;h3 id=&#34;变换矩阵计算&#34;&gt;变换矩阵计算
 &lt;/h3&gt;&lt;p&gt;计算变换到NDC空间的矩阵是由从模型空间-&amp;gt;世界空间-&amp;gt;视图空间-&amp;gt;透视裁剪空间三次变换。&lt;br&gt;
 分别使用modelMatrix，viewMatrix，ProjectionMatrix，乘在一起叫mvp矩阵。&lt;br&gt;
-写成式子应该是 P x V x M x vertexPoint,顺序出错会导致变换出问题，看不到内容。&lt;br&gt;
+写成式子应该是 $P\times V\times M\times vertexPoint$,顺序出错会导致变换出问题，看不到内容。&lt;br&gt;
 也有可能是计算各个矩阵时参数没有设定好，如使用glmatrix库，计算透视ProjectionMatrix，near和far参数应该是大于0的数，且far &amp;gt; near。&lt;/p&gt;
 &lt;h3 id=&#34;模糊问题&#34;&gt;模糊问题
 &lt;/h3&gt;&lt;p&gt;最开始在canvas属性的设置中，没看清代码，只设置CSSstyle中的width，height。
@@ -633,16 +632,13 @@ webgl中面按三角面渲染，顶点数据会有重复顶点。其实可以通
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;canvas&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;glcanvas&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;style&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;border: 2px solid black; width: 100%; heigth: 100%&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;canvas&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;</description>
-        </item>
-        <item>
-        <title>TestBlog</title>
-        <link>http://localhost:1313/p/testblog/</link>
-        <pubDate>Fri, 08 Aug 2025 21:15:37 +0800</pubDate>
-        
-        <guid>http://localhost:1313/p/testblog/</guid>
-        <description>&lt;h1 id=&#34;测试&#34;&gt;测试
-&lt;/h1&gt;</description>
+&lt;/div&gt;&lt;p&gt;相关链接:&lt;br&gt;
+本文矩阵计算使用&lt;a class=&#34;link&#34; href=&#34;https://glmatrix.net/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;glmatrix&lt;/a&gt;。&lt;br&gt;
+webgl代码及代码组织学习自&lt;a class=&#34;link&#34; href=&#34;https://developer.mozilla.org/zh-CN/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;MDN Web Docs&lt;/a&gt;和&lt;a class=&#34;link&#34; href=&#34;https://webglfundamentals.org/webgl/lessons/zh_cn/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;webgl基础&lt;/a&gt;&lt;/p&gt;
+</description>
         </item>
         <item>
         <title>归档</title>

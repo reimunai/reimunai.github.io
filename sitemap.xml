@@ -5,24 +5,41 @@
     <loc>http://localhost:1313/</loc>
     <lastmod>2025-08-10T23:31:11+08:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/categories/</loc>
+    <lastmod>2025-08-10T23:31:11+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/glsl/</loc>
+    <lastmod>2025-08-10T23:31:11+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/html/</loc>
+    <lastmod>2025-08-10T23:31:11+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/javascript/</loc>
+    <lastmod>2025-08-10T23:31:11+08:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/post/</loc>
+    <lastmod>2025-08-10T23:31:11+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/shader/</loc>
+    <lastmod>2025-08-10T23:31:11+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2025-08-10T23:31:11+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/webgl/</loc>
+    <lastmod>2025-08-10T23:31:11+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/webgl/</loc>
     <lastmod>2025-08-10T23:31:11+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/</loc>
     <lastmod>2025-08-10T23:31:11+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/p/testblog/</loc>
-    <lastmod>2025-08-08T21:15:37+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/page/</loc>
     <lastmod>2019-05-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/archives/</loc>
     <lastmod>2019-05-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/</loc>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
   </url><url>
     <loc>http://localhost:1313/categories/test/</loc>
   </url><url>
