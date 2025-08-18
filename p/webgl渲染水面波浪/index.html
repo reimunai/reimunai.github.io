@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+    <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="借助webglAPI，编写glsl着色器代码进行水面模拟的渲染。">
 <title>webgl渲染水面波浪</title>
 
-<link rel='canonical' href='http://localhost:1313/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/'>
+<link rel='canonical' href='https://reimunai.github.io/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/'>
 
 <link rel="stylesheet" href="/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="webgl渲染水面波浪">
 <meta property='og:description' content="借助webglAPI，编写glsl着色器代码进行水面模拟的渲染。">
-<meta property='og:url' content='http://localhost:1313/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/'>
+<meta property='og:url' content='https://reimunai.github.io/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/'>
 <meta property='og:site_name' content='无铃怎么系铃'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='html' /><meta property='article:tag' content='javascript' /><meta property='article:tag' content='webgl' /><meta property='article:tag' content='shader' /><meta property='article:tag' content='Glsl' /><meta property='article:published_time' content='2025-08-10T23:31:11&#43;08:00'/><meta property='article:modified_time' content='2025-08-10T23:31:11&#43;08:00'/><meta property='og:image' content='http://localhost:1313/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image-3.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='HTML' /><meta property='article:tag' content='javascript' /><meta property='article:tag' content='webgl' /><meta property='article:tag' content='shader' /><meta property='article:tag' content='GLSL' /><meta property='article:published_time' content='2025-08-10T23:31:11&#43;08:00'/><meta property='article:modified_time' content='2025-08-10T23:31:11&#43;08:00'/><meta property='og:image' content='https://reimunai.github.io/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image-3.png' />
 <meta name="twitter:title" content="webgl渲染水面波浪">
 <meta name="twitter:description" content="借助webglAPI，编写glsl着色器代码进行水面模拟的渲染。"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='http://localhost:1313/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image-3.png' />
+    <meta name="twitter:image" content='https://reimunai.github.io/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image-3.png' />
     </head>
     <body class="
     article-page
@@ -1000,7 +1000,7 @@ webgl代码及代码组织学习自<a class="link" href="https://developer.mozil
     
     <section class="article-tags">
         
-            <a href="/tags/html/">Html</a>
+            <a href="/tags/html/">HTML</a>
         
             <a href="/tags/javascript/">Javascript</a>
         
@@ -1008,7 +1008,7 @@ webgl代码及代码组织学习自<a class="link" href="https://developer.mozil
         
             <a href="/tags/shader/">Shader</a>
         
-            <a href="/tags/glsl/">Glsl</a>
+            <a href="/tags/glsl/">GLSL</a>
         
     </section>
 
@@ -1164,7 +1164,7 @@ webgl代码及代码组织学习自<a class="link" href="https://developer.mozil
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.f69510afdd5047be60f2d9f8ccc18f62e306e5b874a91d855dbbac5c40b25c37.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');
