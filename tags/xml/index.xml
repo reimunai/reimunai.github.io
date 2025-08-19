@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>XML on 无铃怎么系铃</title>
-        <link>https://reimunai.github.io/tags/xml/</link>
+        <link>http://localhost:10717/tags/xml/</link>
         <description>Recent content in XML on 无铃怎么系铃</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>无铃怎么系铃-reimunai</copyright>
-        <lastBuildDate>Sat, 16 Aug 2025 20:40:49 +0800</lastBuildDate><atom:link href="https://reimunai.github.io/tags/xml/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 16 Aug 2025 20:40:49 +0800</lastBuildDate><atom:link href="http://localhost:10717/tags/xml/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Unity数据持久化存储</title>
-        <link>https://reimunai.github.io/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/</link>
+        <link>http://localhost:10717/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/</link>
         <pubDate>Sat, 16 Aug 2025 20:40:49 +0800</pubDate>
         
-        <guid>https://reimunai.github.io/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/</guid>
-        <description>&lt;h2 id=&#34;json方案&#34;&gt;Json方案
+        <guid>http://localhost:10717/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/</guid>
+        <description>&lt;img src="http://localhost:10717/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/image.png" alt="Featured image of post Unity数据持久化存储" /&gt;&lt;h2 id=&#34;json方案&#34;&gt;Json方案
 &lt;/h2&gt;&lt;h3 id=&#34;简介&#34;&gt;简介
 &lt;/h3&gt;&lt;p&gt;JSON: JavaScript Object Notation(JavaScript 对象表示法)&lt;br&gt;
 JSON是存储和交换文本信息的语法，类似 XML。JSON比 XML 更小、更快，更易解析。

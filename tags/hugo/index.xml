@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Hugo on 无铃怎么系铃</title>
+        <link>http://localhost:10717/tags/hugo/</link>
+        <description>Recent content in Hugo on 无铃怎么系铃</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>无铃怎么系铃-reimunai</copyright>
+        <lastBuildDate>Tue, 19 Aug 2025 13:13:05 +0800</lastBuildDate><atom:link href="http://localhost:10717/tags/hugo/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>关于hugo的一些碎碎念</title>
+        <link>http://localhost:10717/p/%E5%85%B3%E4%BA%8Ehugo%E7%9A%84%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/</link>
+        <pubDate>Tue, 19 Aug 2025 13:13:05 +0800</pubDate>
+        
+        <guid>http://localhost:10717/p/%E5%85%B3%E4%BA%8Ehugo%E7%9A%84%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/</guid>
+        <description>&lt;img src="http://localhost:10717/p/%E5%85%B3%E4%BA%8Ehugo%E7%9A%84%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/image.png" alt="Featured image of post 关于hugo的一些碎碎念" /&gt;&lt;p&gt;之前写关于C#的博客发现在对应markdown文档里插入图片，在构建成静态网站后并不能加载出来。&lt;br&gt;
+先是重新构建，不行。&lt;br&gt;
+改变图片格式，不行。&lt;br&gt;
+&amp;hellip;&lt;br&gt;
+最后是在浏览器按F12看报错发现，发现试图加载图片的路径是http://websize/p/c。而我文件里有p/c#XXXX，根据我的文章titile生成的。#后面的都不见了。我在文件命名是已经避免了特殊符号，没想到是hugo生成的文件有特殊符号，可能#号是在这个hugo网站模板有特殊的解析方式，导致读取图片的时候路径错误。不过我也不敢用ai教的胡乱该模板原代码，只能在title避免#号了。&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

@@ -2,18 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Posts on 无铃怎么系铃</title>
-        <link>https://reimunai.github.io/post/</link>
+        <link>http://localhost:10717/post/</link>
         <description>Recent content in Posts on 无铃怎么系铃</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>无铃怎么系铃-reimunai</copyright>
-        <lastBuildDate>Sun, 17 Aug 2025 22:28:25 +0800</lastBuildDate><atom:link href="https://reimunai.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>C#中的委托，事件和Unity中的特殊事件类型</title>
-        <link>https://reimunai.github.io/p/c%23%E4%B8%AD%E7%9A%84%E5%A7%94%E6%89%98%E4%BA%8B%E4%BB%B6%E5%92%8Cunity%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B/</link>
+        <lastBuildDate>Tue, 19 Aug 2025 13:13:05 +0800</lastBuildDate><atom:link href="http://localhost:10717/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>关于hugo的一些碎碎念</title>
+        <link>http://localhost:10717/p/%E5%85%B3%E4%BA%8Ehugo%E7%9A%84%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/</link>
+        <pubDate>Tue, 19 Aug 2025 13:13:05 +0800</pubDate>
+        
+        <guid>http://localhost:10717/p/%E5%85%B3%E4%BA%8Ehugo%E7%9A%84%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/</guid>
+        <description>&lt;img src="http://localhost:10717/p/%E5%85%B3%E4%BA%8Ehugo%E7%9A%84%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/image.png" alt="Featured image of post 关于hugo的一些碎碎念" /&gt;&lt;p&gt;之前写关于C#的博客发现在对应markdown文档里插入图片，在构建成静态网站后并不能加载出来。&lt;br&gt;
+先是重新构建，不行。&lt;br&gt;
+改变图片格式，不行。&lt;br&gt;
+&amp;hellip;&lt;br&gt;
+最后是在浏览器按F12看报错发现，发现试图加载图片的路径是http://websize/p/c。而我文件里有p/c#XXXX，根据我的文章titile生成的。#后面的都不见了。我在文件命名是已经避免了特殊符号，没想到是hugo生成的文件有特殊符号，可能#号是在这个hugo网站模板有特殊的解析方式，导致读取图片的时候路径错误。不过我也不敢用ai教的胡乱该模板原代码，只能在title避免#号了。&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Csharp中的委托，事件和Unity中的特殊事件类型</title>
+        <link>http://localhost:10717/p/csharp%E4%B8%AD%E7%9A%84%E5%A7%94%E6%89%98%E4%BA%8B%E4%BB%B6%E5%92%8Cunity%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B/</link>
         <pubDate>Sun, 17 Aug 2025 22:28:25 +0800</pubDate>
         
-        <guid>https://reimunai.github.io/p/c%23%E4%B8%AD%E7%9A%84%E5%A7%94%E6%89%98%E4%BA%8B%E4%BB%B6%E5%92%8Cunity%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B/</guid>
-        <description>&lt;h2 id=&#34;c委托&#34;&gt;C#委托
+        <guid>http://localhost:10717/p/csharp%E4%B8%AD%E7%9A%84%E5%A7%94%E6%89%98%E4%BA%8B%E4%BB%B6%E5%92%8Cunity%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B/</guid>
+        <description>&lt;img src="http://localhost:10717/p/csharp%E4%B8%AD%E7%9A%84%E5%A7%94%E6%89%98%E4%BA%8B%E4%BB%B6%E5%92%8Cunity%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B/image.png" alt="Featured image of post Csharp中的委托，事件和Unity中的特殊事件类型" /&gt;&lt;h2 id=&#34;c委托&#34;&gt;C#委托
 &lt;/h2&gt;&lt;h3 id=&#34;介绍&#34;&gt;介绍
 &lt;/h3&gt;&lt;p&gt;在C#里委托是一种类型安全的函数指针，类似于C/C++中的函数指针，相当于C#的引用之于C/C++的指针一样，提供类似指针的操作，但是更加安全。&lt;br&gt;
 且委托允许指向多个函数，即多播。&lt;/p&gt;
@@ -358,7 +371,21 @@ unityEvent是unity提供的对事件操作的api，unityevent允许在inspector�
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;这样就可以在inspector看见类似button的onclick的事件碰撞ui。&lt;br&gt;
+&lt;/div&gt;&lt;p&gt;这样就可以在inspector看见类似button的onclick的事件ui。&lt;br&gt;
+&lt;img src=&#34;http://localhost:10717/p/csharp%E4%B8%AD%E7%9A%84%E5%A7%94%E6%89%98%E4%BA%8B%E4%BB%B6%E5%92%8Cunity%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B/image-1.png&#34;
+	width=&#34;292&#34;
+	height=&#34;305&#34;
+	srcset=&#34;http://localhost:10717/p/csharp%E4%B8%AD%E7%9A%84%E5%A7%94%E6%89%98%E4%BA%8B%E4%BB%B6%E5%92%8Cunity%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B/image-1_hu_bcdaa6788fb0bee5.png 480w, http://localhost:10717/p/csharp%E4%B8%AD%E7%9A%84%E5%A7%94%E6%89%98%E4%BA%8B%E4%BB%B6%E5%92%8Cunity%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B/image-1_hu_101a7d83962275b2.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;alt text&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;95&#34;
+		data-flex-basis=&#34;229px&#34;
+	
+&gt;&lt;br&gt;
 想要带有参数需要重载unityEvent&amp;lt;T0&amp;gt;,unityEvent&amp;lt;T0, T1&amp;gt; 抽象类。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -433,11 +460,11 @@ Unity官方，UnityEvent相关文档&lt;a class=&#34;link&#34; href=&#34;https:/
         </item>
         <item>
         <title>Unity数据持久化存储</title>
-        <link>https://reimunai.github.io/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/</link>
+        <link>http://localhost:10717/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/</link>
         <pubDate>Sat, 16 Aug 2025 20:40:49 +0800</pubDate>
         
-        <guid>https://reimunai.github.io/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/</guid>
-        <description>&lt;h2 id=&#34;json方案&#34;&gt;Json方案
+        <guid>http://localhost:10717/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/</guid>
+        <description>&lt;img src="http://localhost:10717/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/image.png" alt="Featured image of post Unity数据持久化存储" /&gt;&lt;h2 id=&#34;json方案&#34;&gt;Json方案
 &lt;/h2&gt;&lt;h3 id=&#34;简介&#34;&gt;简介
 &lt;/h3&gt;&lt;p&gt;JSON: JavaScript Object Notation(JavaScript 对象表示法)&lt;br&gt;
 JSON是存储和交换文本信息的语法，类似 XML。JSON比 XML 更小、更快，更易解析。
@@ -545,11 +572,11 @@ JSON易于人阅读和编写。C、Python、C++、Java、PHP、Go 等编程语�
         </item>
         <item>
         <title>webgl渲染水面波浪</title>
-        <link>https://reimunai.github.io/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/</link>
+        <link>http://localhost:10717/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/</link>
         <pubDate>Sun, 10 Aug 2025 23:31:11 +0800</pubDate>
         
-        <guid>https://reimunai.github.io/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/</guid>
-        <description>&lt;img src="https://reimunai.github.io/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image-3.png" alt="Featured image of post webgl渲染水面波浪" /&gt;&lt;h2 id=&#34;场景中物体类的编写&#34;&gt;场景中物体类的编写
+        <guid>http://localhost:10717/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/</guid>
+        <description>&lt;img src="http://localhost:10717/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image-3.png" alt="Featured image of post webgl渲染水面波浪" /&gt;&lt;h2 id=&#34;场景中物体类的编写&#34;&gt;场景中物体类的编写
 &lt;/h2&gt;&lt;h3 id=&#34;相机&#34;&gt;相机
 &lt;/h3&gt;&lt;p&gt;定义相机类，包含其位置，观察位置，向上方向的属性。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -1115,10 +1142,10 @@ webgl中面按三角面渲染，顶点数据会有重复顶点。其实可以通
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h2 id=&#34;最终效果&#34;&gt;最终效果
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://reimunai.github.io/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image.png&#34;
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;http://localhost:10717/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image.png&#34;
 	width=&#34;1908&#34;
 	height=&#34;1008&#34;
-	srcset=&#34;https://reimunai.github.io/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image_hu_eaf4be86bcc3694b.png 480w, https://reimunai.github.io/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image_hu_778d5d8529f192c0.png 1024w&#34;
+	srcset=&#34;http://localhost:10717/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image_hu_eaf4be86bcc3694b.png 480w, http://localhost:10717/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image_hu_778d5d8529f192c0.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;仅渲染线条&#34;
@@ -1129,10 +1156,10 @@ webgl中面按三角面渲染，顶点数据会有重复顶点。其实可以通
 		data-flex-basis=&#34;454px&#34;
 	
 &gt;&lt;br&gt;
-&lt;img src=&#34;https://reimunai.github.io/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image-1.png&#34;
+&lt;img src=&#34;http://localhost:10717/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image-1.png&#34;
 	width=&#34;1908&#34;
 	height=&#34;1008&#34;
-	srcset=&#34;https://reimunai.github.io/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image-1_hu_ddd913ecb15306fa.png 480w, https://reimunai.github.io/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image-1_hu_bd176d64ef0e0cfa.png 1024w&#34;
+	srcset=&#34;http://localhost:10717/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image-1_hu_ddd913ecb15306fa.png 480w, http://localhost:10717/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image-1_hu_bd176d64ef0e0cfa.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;渲染三角面&#34;
@@ -1178,10 +1205,10 @@ webgl代码及代码组织学习自&lt;a class=&#34;link&#34; href=&#34;https://
         </item>
         <item>
         <title>TestBlog</title>
-        <link>https://reimunai.github.io/p/testblog/</link>
+        <link>http://localhost:10717/p/testblog/</link>
         <pubDate>Fri, 08 Aug 2025 21:15:37 +0800</pubDate>
         
-        <guid>https://reimunai.github.io/p/testblog/</guid>
+        <guid>http://localhost:10717/p/testblog/</guid>
         <description>&lt;h1 id=&#34;测试&#34;&gt;测试
 &lt;/h1&gt;</description>
         </item>
