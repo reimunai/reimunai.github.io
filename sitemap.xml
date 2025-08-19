@@ -2,78 +2,78 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://reimunai.github.io/</loc>
     <lastmod>2025-08-17T22:28:25+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/c%23/</loc>
+    <loc>https://reimunai.github.io/categories/c%23/</loc>
     <lastmod>2025-08-17T22:28:25+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/c%23/</loc>
+    <loc>https://reimunai.github.io/tags/c%23/</loc>
     <lastmod>2025-08-17T22:28:25+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/p/c%23%E4%B8%AD%E7%9A%84%E5%A7%94%E6%89%98%E4%BA%8B%E4%BB%B6%E5%92%8Cunity%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B/</loc>
+    <loc>https://reimunai.github.io/p/c%23%E4%B8%AD%E7%9A%84%E5%A7%94%E6%89%98%E4%BA%8B%E4%BB%B6%E5%92%8Cunity%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B/</loc>
     <lastmod>2025-08-17T22:28:25+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://reimunai.github.io/categories/</loc>
     <lastmod>2025-08-17T22:28:25+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/</loc>
+    <loc>https://reimunai.github.io/post/</loc>
     <lastmod>2025-08-17T22:28:25+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://reimunai.github.io/tags/</loc>
     <lastmod>2025-08-17T22:28:25+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/unity/</loc>
+    <loc>https://reimunai.github.io/categories/unity/</loc>
     <lastmod>2025-08-17T22:28:25+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/unity/</loc>
+    <loc>https://reimunai.github.io/tags/unity/</loc>
     <lastmod>2025-08-17T22:28:25+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/json/</loc>
+    <loc>https://reimunai.github.io/tags/json/</loc>
     <lastmod>2025-08-16T20:40:49+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/</loc>
+    <loc>https://reimunai.github.io/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/</loc>
     <lastmod>2025-08-16T20:40:49+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/xml/</loc>
+    <loc>https://reimunai.github.io/tags/xml/</loc>
     <lastmod>2025-08-16T20:40:49+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/glsl/</loc>
+    <loc>https://reimunai.github.io/tags/glsl/</loc>
     <lastmod>2025-08-10T23:31:11+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/html/</loc>
+    <loc>https://reimunai.github.io/tags/html/</loc>
     <lastmod>2025-08-10T23:31:11+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/javascript/</loc>
+    <loc>https://reimunai.github.io/tags/javascript/</loc>
     <lastmod>2025-08-10T23:31:11+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/shader/</loc>
+    <loc>https://reimunai.github.io/tags/shader/</loc>
     <lastmod>2025-08-10T23:31:11+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/webgl/</loc>
+    <loc>https://reimunai.github.io/categories/webgl/</loc>
     <lastmod>2025-08-10T23:31:11+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/webgl/</loc>
+    <loc>https://reimunai.github.io/tags/webgl/</loc>
     <lastmod>2025-08-10T23:31:11+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/</loc>
+    <loc>https://reimunai.github.io/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/</loc>
     <lastmod>2025-08-10T23:31:11+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/p/testblog/</loc>
+    <loc>https://reimunai.github.io/p/testblog/</loc>
     <lastmod>2025-08-08T21:15:37+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/page/</loc>
+    <loc>https://reimunai.github.io/page/</loc>
     <lastmod>2019-05-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/archives/</loc>
+    <loc>https://reimunai.github.io/archives/</loc>
     <lastmod>2019-05-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/test/</loc>
+    <loc>https://reimunai.github.io/categories/test/</loc>
   </url><url>
-    <loc>http://localhost:1313/%E5%85%B3%E4%BA%8E/</loc>
+    <loc>https://reimunai.github.io/%E5%85%B3%E4%BA%8E/</loc>
   </url><url>
-    <loc>http://localhost:1313/search/</loc>
+    <loc>https://reimunai.github.io/search/</loc>
   </url><url>
-    <loc>http://localhost:1313/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/</loc>
+    <loc>https://reimunai.github.io/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/</loc>
   </url>
 </urlset>
