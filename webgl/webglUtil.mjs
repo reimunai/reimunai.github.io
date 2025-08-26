@@ -1,6 +1,3 @@
-import {mat4} from './glmatrix/dist/esm/index.js'
-import {vec3} from './glmatrix/dist/esm/index.js'
-
 // 编译Shader
 export function createShader(gl, type, source) {
   const shader = gl.createShader(type);
