@@ -1,4 +1,4 @@
-import {mat4} from './glmatrix/dist/esm/index.js'
+import {mat4} from './glmatrix/dist/esm/index.mjs'
 
 export class Transform
 {
