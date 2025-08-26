@@ -1,4 +1,4 @@
-import {mat4} from '/webgl/glmatrix/dist/esm/index.js'
+import {mat4} from '/webgl/glmatrix/dist/esm/index.mjs'
 export class Transform
 {
     position = [0, 0, 0];
