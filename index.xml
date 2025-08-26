@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>无铃怎么系铃</title>
-        <link>http://localhost:1313/</link>
+        <link>https://reimunai.github.io/</link>
         <description>Recent content on 无铃怎么系铃</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>无铃怎么系铃-reimunai</copyright>
-        <lastBuildDate>Mon, 25 Aug 2025 17:45:23 +0800</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 25 Aug 2025 17:45:23 +0800</lastBuildDate><atom:link href="https://reimunai.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>webgl实现简单粒子动画</title>
-        <link>http://localhost:1313/p/webgl%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%B2%92%E5%AD%90%E5%8A%A8%E7%94%BB/</link>
+        <link>https://reimunai.github.io/p/webgl%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%B2%92%E5%AD%90%E5%8A%A8%E7%94%BB/</link>
         <pubDate>Mon, 25 Aug 2025 17:45:23 +0800</pubDate>
         
-        <guid>http://localhost:1313/p/webgl%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%B2%92%E5%AD%90%E5%8A%A8%E7%94%BB/</guid>
+        <guid>https://reimunai.github.io/p/webgl%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%B2%92%E5%AD%90%E5%8A%A8%E7%94%BB/</guid>
         <description>&lt;h2 id=&#34;引入&#34;&gt;引入
 &lt;/h2&gt;&lt;p&gt;之前使用webgl实现的波浪效果，只要去除顶点之间连线，渲染顶点圆，其实也可以算是粒子动画。但是那样的方法对于复杂粒子系统动画就有点捉襟见肘了。对于波浪，我们使用不同频率正弦波叠加，传入uniform变量time给gpu。每个顶点都可以简单地计算出每时每刻的位置后，进行顶点变换再渲染。如果系统中粒子要实时响应外部因素变化(如受到速度属性，外部力属性，质量属性)，粒子存在相互作用(碰撞，引力)和模型复杂的时候，我们更希望根据上次粒子的位置，速度属性，递推计算粒子位置变换。这时候就可以使用webgl2的transform feedback功能，将前一帧的位置计算结果写入缓冲区供下一帧计算使用。&lt;/p&gt;
 &lt;h2 id=&#34;关于webgl2&#34;&gt;关于webgl2
@@ -368,10 +368,10 @@ webgl2有许多新的特性可以使用，这里主要变换反馈对象transfor
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;效果(cameraZ为0有bug)
-&lt;img src=&#34;http://localhost:1313/p/webgl%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%B2%92%E5%AD%90%E5%8A%A8%E7%94%BB/image.png&#34;
+&lt;img src=&#34;https://reimunai.github.io/p/webgl%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%B2%92%E5%AD%90%E5%8A%A8%E7%94%BB/image.png&#34;
 	width=&#34;1718&#34;
 	height=&#34;731&#34;
-	srcset=&#34;http://localhost:1313/p/webgl%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%B2%92%E5%AD%90%E5%8A%A8%E7%94%BB/image_hu_975d9fa4a770c39c.png 480w, http://localhost:1313/p/webgl%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%B2%92%E5%AD%90%E5%8A%A8%E7%94%BB/image_hu_7d8d112ea15371c1.png 1024w&#34;
+	srcset=&#34;https://reimunai.github.io/p/webgl%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%B2%92%E5%AD%90%E5%8A%A8%E7%94%BB/image_hu_975d9fa4a770c39c.png 480w, https://reimunai.github.io/p/webgl%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%B2%92%E5%AD%90%E5%8A%A8%E7%94%BB/image_hu_7d8d112ea15371c1.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;alt text&#34;
@@ -384,7 +384,7 @@ webgl2有许多新的特性可以使用，这里主要变换反馈对象transfor
 &gt;
 &lt;div class=&#34;custom-iframe-container&#34;&gt;
     &lt;iframe 
-        src=&#34;http://localhost:1313/webgl/particle.html&#34; 
+        src=&#34;https://reimunai.github.io/webgl/particle.html&#34; 
         width=&#34;100%&#34; 
         height=&#34;500&#34; 
         frameborder=&#34;0&#34;
@@ -397,11 +397,11 @@ webgl2有许多新的特性可以使用，这里主要变换反馈对象transfor
         </item>
         <item>
         <title>关于hugo的一些碎碎念</title>
-        <link>http://localhost:1313/p/%E5%85%B3%E4%BA%8Ehugo%E7%9A%84%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/</link>
+        <link>https://reimunai.github.io/p/%E5%85%B3%E4%BA%8Ehugo%E7%9A%84%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/</link>
         <pubDate>Tue, 19 Aug 2025 13:13:05 +0800</pubDate>
         
-        <guid>http://localhost:1313/p/%E5%85%B3%E4%BA%8Ehugo%E7%9A%84%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/</guid>
-        <description>&lt;img src="http://localhost:1313/p/%E5%85%B3%E4%BA%8Ehugo%E7%9A%84%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/image.png" alt="Featured image of post 关于hugo的一些碎碎念" /&gt;&lt;p&gt;之前写关于C#的博客发现在对应markdown文档里插入图片，在构建成静态网站后并不能加载出来。&lt;br&gt;
+        <guid>https://reimunai.github.io/p/%E5%85%B3%E4%BA%8Ehugo%E7%9A%84%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/</guid>
+        <description>&lt;img src="https://reimunai.github.io/p/%E5%85%B3%E4%BA%8Ehugo%E7%9A%84%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/image.png" alt="Featured image of post 关于hugo的一些碎碎念" /&gt;&lt;p&gt;之前写关于C#的博客发现在对应markdown文档里插入图片，在构建成静态网站后并不能加载出来。&lt;br&gt;
 先是重新构建，不行。&lt;br&gt;
 改变图片格式，不行。&lt;br&gt;
 &amp;hellip;&lt;br&gt;
@@ -410,11 +410,11 @@ webgl2有许多新的特性可以使用，这里主要变换反馈对象transfor
         </item>
         <item>
         <title>Csharp中的委托，事件和Unity中的特殊事件类型</title>
-        <link>http://localhost:1313/p/csharp%E4%B8%AD%E7%9A%84%E5%A7%94%E6%89%98%E4%BA%8B%E4%BB%B6%E5%92%8Cunity%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B/</link>
+        <link>https://reimunai.github.io/p/csharp%E4%B8%AD%E7%9A%84%E5%A7%94%E6%89%98%E4%BA%8B%E4%BB%B6%E5%92%8Cunity%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B/</link>
         <pubDate>Sun, 17 Aug 2025 22:28:25 +0800</pubDate>
         
-        <guid>http://localhost:1313/p/csharp%E4%B8%AD%E7%9A%84%E5%A7%94%E6%89%98%E4%BA%8B%E4%BB%B6%E5%92%8Cunity%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B/</guid>
-        <description>&lt;img src="http://localhost:1313/p/csharp%E4%B8%AD%E7%9A%84%E5%A7%94%E6%89%98%E4%BA%8B%E4%BB%B6%E5%92%8Cunity%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B/image.png" alt="Featured image of post Csharp中的委托，事件和Unity中的特殊事件类型" /&gt;&lt;h2 id=&#34;c委托&#34;&gt;C#委托
+        <guid>https://reimunai.github.io/p/csharp%E4%B8%AD%E7%9A%84%E5%A7%94%E6%89%98%E4%BA%8B%E4%BB%B6%E5%92%8Cunity%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B/</guid>
+        <description>&lt;img src="https://reimunai.github.io/p/csharp%E4%B8%AD%E7%9A%84%E5%A7%94%E6%89%98%E4%BA%8B%E4%BB%B6%E5%92%8Cunity%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B/image.png" alt="Featured image of post Csharp中的委托，事件和Unity中的特殊事件类型" /&gt;&lt;h2 id=&#34;c委托&#34;&gt;C#委托
 &lt;/h2&gt;&lt;h3 id=&#34;介绍&#34;&gt;介绍
 &lt;/h3&gt;&lt;p&gt;在C#里委托是一种类型安全的函数指针，类似于C/C++中的函数指针，相当于C#的引用之于C/C++的指针一样，提供类似指针的操作，但是更加安全。&lt;br&gt;
 且委托允许指向多个函数，即多播。&lt;/p&gt;
@@ -760,10 +760,10 @@ unityEvent是unity提供的对事件操作的api，unityevent允许在inspector�
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;这样就可以在inspector看见类似button的onclick的事件ui。&lt;br&gt;
-&lt;img src=&#34;http://localhost:1313/p/csharp%E4%B8%AD%E7%9A%84%E5%A7%94%E6%89%98%E4%BA%8B%E4%BB%B6%E5%92%8Cunity%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B/image-1.png&#34;
+&lt;img src=&#34;https://reimunai.github.io/p/csharp%E4%B8%AD%E7%9A%84%E5%A7%94%E6%89%98%E4%BA%8B%E4%BB%B6%E5%92%8Cunity%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B/image-1.png&#34;
 	width=&#34;292&#34;
 	height=&#34;305&#34;
-	srcset=&#34;http://localhost:1313/p/csharp%E4%B8%AD%E7%9A%84%E5%A7%94%E6%89%98%E4%BA%8B%E4%BB%B6%E5%92%8Cunity%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B/image-1_hu_bcdaa6788fb0bee5.png 480w, http://localhost:1313/p/csharp%E4%B8%AD%E7%9A%84%E5%A7%94%E6%89%98%E4%BA%8B%E4%BB%B6%E5%92%8Cunity%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B/image-1_hu_101a7d83962275b2.png 1024w&#34;
+	srcset=&#34;https://reimunai.github.io/p/csharp%E4%B8%AD%E7%9A%84%E5%A7%94%E6%89%98%E4%BA%8B%E4%BB%B6%E5%92%8Cunity%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B/image-1_hu_bcdaa6788fb0bee5.png 480w, https://reimunai.github.io/p/csharp%E4%B8%AD%E7%9A%84%E5%A7%94%E6%89%98%E4%BA%8B%E4%BB%B6%E5%92%8Cunity%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B/image-1_hu_101a7d83962275b2.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;alt text&#34;
@@ -848,11 +848,11 @@ Unity官方，UnityEvent相关文档&lt;a class=&#34;link&#34; href=&#34;https:/
         </item>
         <item>
         <title>Unity数据持久化存储</title>
-        <link>http://localhost:1313/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/</link>
+        <link>https://reimunai.github.io/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/</link>
         <pubDate>Sat, 16 Aug 2025 20:40:49 +0800</pubDate>
         
-        <guid>http://localhost:1313/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/</guid>
-        <description>&lt;img src="http://localhost:1313/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/image.png" alt="Featured image of post Unity数据持久化存储" /&gt;&lt;h2 id=&#34;json方案&#34;&gt;Json方案
+        <guid>https://reimunai.github.io/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/</guid>
+        <description>&lt;img src="https://reimunai.github.io/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/image.png" alt="Featured image of post Unity数据持久化存储" /&gt;&lt;h2 id=&#34;json方案&#34;&gt;Json方案
 &lt;/h2&gt;&lt;h3 id=&#34;简介&#34;&gt;简介
 &lt;/h3&gt;&lt;p&gt;JSON: JavaScript Object Notation(JavaScript 对象表示法)&lt;br&gt;
 JSON是存储和交换文本信息的语法，类似 XML。JSON比 XML 更小、更快，更易解析。
@@ -960,11 +960,11 @@ JSON易于人阅读和编写。C、Python、C++、Java、PHP、Go 等编程语�
         </item>
         <item>
         <title>webgl渲染水面波浪</title>
-        <link>http://localhost:1313/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/</link>
+        <link>https://reimunai.github.io/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/</link>
         <pubDate>Sun, 10 Aug 2025 23:31:11 +0800</pubDate>
         
-        <guid>http://localhost:1313/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/</guid>
-        <description>&lt;img src="http://localhost:1313/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image-3.png" alt="Featured image of post webgl渲染水面波浪" /&gt;&lt;h2 id=&#34;场景中物体类的编写&#34;&gt;场景中物体类的编写
+        <guid>https://reimunai.github.io/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/</guid>
+        <description>&lt;img src="https://reimunai.github.io/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image-3.png" alt="Featured image of post webgl渲染水面波浪" /&gt;&lt;h2 id=&#34;场景中物体类的编写&#34;&gt;场景中物体类的编写
 &lt;/h2&gt;&lt;h3 id=&#34;相机&#34;&gt;相机
 &lt;/h3&gt;&lt;p&gt;定义相机类，包含其位置，观察位置，向上方向的属性。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -1530,10 +1530,10 @@ webgl中面按三角面渲染，顶点数据会有重复顶点。其实可以通
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h2 id=&#34;最终效果&#34;&gt;最终效果
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image.png&#34;
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://reimunai.github.io/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image.png&#34;
 	width=&#34;1908&#34;
 	height=&#34;1008&#34;
-	srcset=&#34;http://localhost:1313/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image_hu_eaf4be86bcc3694b.png 480w, http://localhost:1313/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image_hu_778d5d8529f192c0.png 1024w&#34;
+	srcset=&#34;https://reimunai.github.io/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image_hu_eaf4be86bcc3694b.png 480w, https://reimunai.github.io/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image_hu_778d5d8529f192c0.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;仅渲染线条&#34;
@@ -1544,10 +1544,10 @@ webgl中面按三角面渲染，顶点数据会有重复顶点。其实可以通
 		data-flex-basis=&#34;454px&#34;
 	
 &gt;&lt;br&gt;
-&lt;img src=&#34;http://localhost:1313/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image-1.png&#34;
+&lt;img src=&#34;https://reimunai.github.io/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image-1.png&#34;
 	width=&#34;1908&#34;
 	height=&#34;1008&#34;
-	srcset=&#34;http://localhost:1313/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image-1_hu_ddd913ecb15306fa.png 480w, http://localhost:1313/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image-1_hu_bd176d64ef0e0cfa.png 1024w&#34;
+	srcset=&#34;https://reimunai.github.io/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image-1_hu_ddd913ecb15306fa.png 480w, https://reimunai.github.io/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image-1_hu_bd176d64ef0e0cfa.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;渲染三角面&#34;
@@ -1593,44 +1593,44 @@ webgl代码及代码组织学习自&lt;a class=&#34;link&#34; href=&#34;https://
         </item>
         <item>
         <title>TestBlog</title>
-        <link>http://localhost:1313/p/testblog/</link>
+        <link>https://reimunai.github.io/p/testblog/</link>
         <pubDate>Fri, 08 Aug 2025 21:15:37 +0800</pubDate>
         
-        <guid>http://localhost:1313/p/testblog/</guid>
+        <guid>https://reimunai.github.io/p/testblog/</guid>
         <description>&lt;h1 id=&#34;测试&#34;&gt;测试
 &lt;/h1&gt;</description>
         </item>
         <item>
         <title>归档</title>
-        <link>http://localhost:1313/archives/</link>
+        <link>https://reimunai.github.io/archives/</link>
         <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/archives/</guid>
+        <guid>https://reimunai.github.io/archives/</guid>
         <description></description>
         </item>
         <item>
         <title>关于</title>
-        <link>http://localhost:1313/%E5%85%B3%E4%BA%8E/</link>
+        <link>https://reimunai.github.io/%E5%85%B3%E4%BA%8E/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/%E5%85%B3%E4%BA%8E/</guid>
+        <guid>https://reimunai.github.io/%E5%85%B3%E4%BA%8E/</guid>
         <description>&lt;p&gt;This is a test page for i18n support.&lt;/p&gt;
 </description>
         </item>
         <item>
         <title>搜索</title>
-        <link>http://localhost:1313/search/</link>
+        <link>https://reimunai.github.io/search/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/search/</guid>
+        <guid>https://reimunai.github.io/search/</guid>
         <description></description>
         </item>
         <item>
         <title>友情链接</title>
-        <link>http://localhost:1313/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/</link>
+        <link>https://reimunai.github.io/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/</guid>
+        <guid>https://reimunai.github.io/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/</guid>
         <description></description>
         </item>
         
