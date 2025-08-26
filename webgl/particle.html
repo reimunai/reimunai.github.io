@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+
+        <title>webgl2 example</title>
+    </head>
+
+    <body>
+        <canvas id="glcanvas" width="1920" height="1080"
+        style="border: 2px black solid; height: 100%; width: 100%;"></canvas>
+        <div style="width: 100%; height: auto;">
+        <label>camera X:</label>
+        <input type="number" id="cameraX" value="0">
+        <label>camera Y:</label>
+        <input type="number" id="cameraY" value="72">
+        <label>camera Z:</label>
+        <input type="number" id="cameraZ" value="1">
+
+        <label>force Value:</label>
+        <input type="number" id="force">
+        </div>
+       
+    </body>
+</html>
+
+<script type="module">
+    import {Cube} from '/webgl/ObjectUtil.mjs';
+    import {Camera} from '/webgl/ObjectUtil.mjs';
+    import {CubeShader} from '/webgl/shaderUtil.mjs';
+    import {Transform} from '/webgl/ObjectUtil.mjs';
+    import {mat4} from '/webgl/glmatrix/dist/esm/index.js'
+    import * as WebglUtil from '/webgl/webglUtil.mjs';
+
+    const canvas = document.getElementById("glcanvas");
+    const gl2 = canvas.getContext("webgl2");
+    gl2.pixelStorei(gl2.UNPACK_FLIP_Y_WEBGL, true);
+
+    const updateVertexShaderSource = `#version 300 es
+    in vec3 oldPosition;
+    in vec3 oldVelocity;
+    in float mass;
+
+    uniform vec3 gPoint;
+    uniform float gForce;
+    uniform float deltaTime;
+
+    out vec3 newPosition;
+    out vec3 newVelocity;
+    void main()
+    {
+        float dt = deltaTime / 1000.;
+        newPosition = oldPosition + oldVelocity * dt;
+        vec3 a = normalize(gPoint - newPosition) * gForce / mass;
+        newVelocity = oldVelocity + a * dt;
+        if(length(newPosition - gPoint) <= 0.1)
+        {
+            newVelocity = oldVelocity -  5. * a * dt;
+        }
+    }
+    `
+
+    const renderVertexShaderSource = `#version 300 es
+        in vec4 a_position;
+        uniform mat4 mvp;
+        void main()
+        {
+            gl_Position = mvp * a_position;
+            gl_PointSize = 10.;
+        }
+    `
+    const renderFragmentShaderSource = `#version 300 es
+        precision highp float;
+        out vec4 outColor;
+
+        void main()
+        {
+            vec2 coord = gl_PointCoord - vec2(0.5);
+            float dist = length(coord);
+            if(dist > 0.43)
+            {
+                discard;
+            }
+            outColor = vec4(1.0, 0.7, 0.7, 1.0);
+            outColor.a *= 1.0 - smoothstep(0.4, 0.5, dist);
+        }
+    `
+
+    const updateVertexShader = WebglUtil.createShader(gl2, gl2.VERTEX_SHADER, updateVertexShaderSource);
+    const renderVertexShader = WebglUtil.createShader(gl2, gl2.VERTEX_SHADER, renderVertexShaderSource);
+    const renderFragmentShader = WebglUtil.createShader(gl2, gl2.FRAGMENT_SHADER, renderFragmentShaderSource);
+
+    const updateProgram = gl2.createProgram();
+    gl2.attachShader(updateProgram, updateVertexShader);
+    gl2.attachShader(updateProgram, renderFragmentShader);
+    gl2.transformFeedbackVaryings(
+        updateProgram,
+        ['newPosition', 'newVelocity'],
+        gl2.SEPARATE_ATTRIBS
+    );
+    gl2.linkProgram(updateProgram);
+    if(!gl2.getProgramParameter(updateProgram, gl2.LINK_STATUS))
+    {   
+        throw new Error(gl.getProgramParameter(updateProgram));
+    }
+
+    const renderProgram = WebglUtil.createProgram(gl2, renderVertexShader, renderFragmentShader);
+
+    const oldPositionAttribLoc = gl2.getAttribLocation(updateProgram, "oldPosition");
+    const oldVelocityAttribLoc = gl2.getAttribLocation(updateProgram, "oldVelocity");
+    const massAttribLoc = gl2.getAttribLocation(updateProgram, "mass");
+
+    const gPointUniformLoc = gl2.getUniformLocation(updateProgram, "gPoint");
+    const gForceUniformLoc = gl2.getUniformLocation(updateProgram, "gForce");
+    const deltaTimeUniformLoc = gl2.getUniformLocation(updateProgram, "deltaTime");
+
+    const aPositionAttribLoc = gl2.getAttribLocation(renderProgram, "a_position");
+    const mvpUniformAttribLoc = gl2.getUniformLocation(renderProgram, "mvp");
+
+    const positions = [];
+    const velocitys = [];
+    const masses = [];
+    for(var i = 0; i < 10000; i++)
+    {
+        var x = Math.random();
+        var y = Math.random();
+        var z = Math.random();
+        var mass = Math.random();
+        positions.push(x * 50 + 10, 0, 0);
+
+
+        velocitys.push(0, 0, 50);
+        masses.push(mass * 10);
+    }
+    //创建双缓冲区并设置大小
+    function createDoubleBuffer()
+    {
+        return {
+            write : gl2.createBuffer(),
+            read : gl2.createBuffer(),
+            swap : function(){
+                 const temp = this.write;
+            this.write = this.read;
+            this.read = temp;
+            }
+        }
+    }
+
+    var positionDoubleBuffer = createDoubleBuffer();
+    gl2.bindBuffer(gl2.ARRAY_BUFFER, positionDoubleBuffer.write);
+    gl2.bufferData(gl2.ARRAY_BUFFER, 120000, gl2.DYNAMIC_DRAW);
+
+    var velocityDoubleBuffer = createDoubleBuffer();
+    gl2.bindBuffer(gl2.ARRAY_BUFFER, velocityDoubleBuffer.write);
+    gl2.bufferData(gl2.ARRAY_BUFFER, 120000, gl2.DYNAMIC_DRAW);
+
+    gl2.bindBuffer(gl2.ARRAY_BUFFER, null);
+    
+    //设置属性
+    const updateVAO = gl2.createVertexArray();
+    gl2.bindVertexArray(updateVAO);
+    gl2.bindBuffer(gl2.ARRAY_BUFFER, positionDoubleBuffer.read);
+    gl2.bufferData(gl2.ARRAY_BUFFER, new Float32Array(positions), gl2.DYNAMIC_DRAW);//TODO
+
+    gl2.enableVertexAttribArray(oldPositionAttribLoc);
+    gl2.vertexAttribPointer(
+        oldPositionAttribLoc,
+        3,
+        gl2.FLOAT,
+        false,
+        0,
+        0
+    );
+
+    gl2.bindBuffer(gl2.ARRAY_BUFFER, velocityDoubleBuffer.read);
+    gl2.bufferData(gl2.ARRAY_BUFFER, new Float32Array(velocitys), gl2.DYNAMIC_DRAW);//TODO
+    gl2.enableVertexAttribArray(oldVelocityAttribLoc);
+    gl2.vertexAttribPointer(
+        oldVelocityAttribLoc,
+        3,
+        gl2.FLOAT,
+        false,
+        0,
+        0
+    );
+    const massBuffer = gl2.createBuffer();
+    gl2.bindBuffer(gl2.ARRAY_BUFFER, massBuffer);
+    gl2.bufferData(gl2.ARRAY_BUFFER, new Float32Array(masses), gl2.DYNAMIC_DRAW);
+    gl2.enableVertexAttribArray(massAttribLoc);
+    gl2.vertexAttribPointer(
+        massAttribLoc,
+        1,
+        gl2.FLOAT,
+        false,
+        0,
+        0
+    );
+    gl2.bindVertexArray(null);
+
+    const tf = gl2.createTransformFeedback();
+    gl2.bindTransformFeedback(gl2.TRANSFORM_FEEDBACK, tf);
+    gl2.bindBufferBase(gl2.TRANSFORM_FEEDBACK_BUFFER, 0, positionDoubleBuffer.write);
+    gl2.bindBufferBase(gl2.TRANSFORM_FEEDBACK_BUFFER, 1, velocityDoubleBuffer.write);
+    // gl2.bindTransformFeedback(gl2.TRANSFORM_FEEDBACK, null);
+    // gl2.bindBuffer(gl2.ARRAY_BUFFER, null);
+
+
+    const renderVAO = gl2.createVertexArray();
+    gl2.bindVertexArray(renderVAO);
+    gl2.bindBuffer(gl2.ARRAY_BUFFER, positionDoubleBuffer.read);
+    gl2.enableVertexAttribArray(aPositionAttribLoc);
+    gl2.vertexAttribPointer(
+        aPositionAttribLoc,
+        3,
+        gl2.FLOAT,
+        false,
+        0,
+        0
+    );
+    gl2.bindVertexArray(null);
+
+    var gForce = 2;
+    var deltaTime = 0;
+    var lasT = 0;
+    var verFrame = 60;
+    const camera = new Camera();
+    camera.position = [0, 72, 1];
+    camera.gazePosition = [0, 0, 0];
+    camera.far = null;
+
+    const cX = document.getElementById("cameraX");
+    cX.addEventListener("input", function(){
+        camera.position[0] = cX.value;
+    });
+
+    const cY = document.getElementById("cameraY");
+    cY.addEventListener("input", function(){
+        camera.position[1] = cY.value;
+    });
+
+    const cZ = document.getElementById("cameraZ");
+    cZ.addEventListener("input", function(){
+        camera.position[2] = cZ.value;
+    });
+
+    const forceInput = document.getElementById("force");
+    forceInput.addEventListener("input", function(){
+        gForce = forceInput.value;
+    });
+
+    function draw(currentTime)
+    {
+        verFrame = 1000 / deltaTime;
+        //console.log(verFrame);
+        deltaTime = currentTime - lasT;
+        lasT = currentTime;
+        const mvpMatrix = mat4.create();
+        mat4.multiply(mvpMatrix, camera.getViewMatrix(), mvpMatrix);
+        mat4.multiply(mvpMatrix, camera.getProjectionMatrix(canvas), mvpMatrix);
+
+        gl2.viewport(0, 0, canvas.width, canvas.height);
+
+        gl2.clearColor(0., 0., 0., 1.0);
+        gl2.clearDepth(1.0);
+        gl2.enable(gl2.DEPTH_TEST);
+        gl2.clear(gl2.COLOR_BUFFER_BIT | gl2.DEPTH_BUFFER_BIT);
+
+        gl2.useProgram(renderProgram);
+        gl2.bindVertexArray(renderVAO);
+        gl2.uniformMatrix4fv(mvpUniformAttribLoc, false, mvpMatrix);
+        gl2.drawArrays(gl2.POINTS, 0, 10000);
+
+        gl2.useProgram(updateProgram);
+        gl2.bindVertexArray(updateVAO);
+        gl2.enable(gl2.RASTERIZER_DISCARD);
+
+        gl2.uniform3fv(gPointUniformLoc, [0, 0, 0]);
+        gl2.uniform1f(gForceUniformLoc, gForce);
+        gl2.uniform1f(deltaTimeUniformLoc, 16);
+
+        gl2.bindTransformFeedback(gl2.TRANSFORM_FEEDBACK, tf);
+        gl2.beginTransformFeedback(gl2.POINTS);
+        gl2.drawArrays(gl2.POINTS, 0, 10000);
+        gl2.endTransformFeedback();
+        gl2.bindTransformFeedback(gl2.TRANSFORM_FEEDBACK, null);
+        gl2.disable(gl2.RASTERIZER_DISCARD);
+
+        gl2.bindVertexArray(null);
+
+        positionDoubleBuffer.swap();
+        velocityDoubleBuffer.swap();
+        gl2.bindVertexArray(updateVAO);
+        gl2.bindBuffer(gl2.ARRAY_BUFFER, positionDoubleBuffer.read);
+        gl2.vertexAttribPointer(oldPositionAttribLoc, 3, gl2.FLOAT, false, 0, 0);
+        gl2.bindBuffer(gl2.ARRAY_BUFFER, velocityDoubleBuffer.read);
+        gl2.vertexAttribPointer(oldVelocityAttribLoc, 3, gl2.FLOAT, false, 0, 0);
+        gl2.bindVertexArray(null);
+
+        gl2.bindVertexArray(renderVAO);
+        gl2.bindBuffer(gl2.ARRAY_BUFFER, positionDoubleBuffer.read);
+        gl2.vertexAttribPointer(aPositionAttribLoc, 3, gl2.FLOAT, false, 0, 0);
+        gl2.bindVertexArray(null);
+
+        gl2.bindTransformFeedback(gl2.TRANSFORM_FEEDBACK, tf);
+        gl2.bindBufferBase(gl2.TRANSFORM_FEEDBACK_BUFFER, 0, positionDoubleBuffer.write);
+        gl2.bindBufferBase(gl2.TRANSFORM_FEEDBACK_BUFFER, 1, velocityDoubleBuffer.write);
+        gl2.bindTransformFeedback(gl2.TRANSFORM_FEEDBACK, null);
+
+    }
+
+    function render(currentTime)
+    {
+        draw(currentTime);
+        requestAnimationFrame(render);
+    }
+
+    render();
+</script>
