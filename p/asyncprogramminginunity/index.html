@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="在unity实现数据持久化存储。">
-<title>Unity数据持久化存储</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="unity中的异步编程入门。">
+<title>AsyncProgrammingInUnity</title>
 
-<link rel='canonical' href='https://reimunai.github.io/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/'>
+<link rel='canonical' href='https://reimunai.github.io/p/asyncprogramminginunity/'>
 
-<link rel="stylesheet" href="/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="Unity数据持久化存储">
-<meta property='og:description' content="在unity实现数据持久化存储。">
-<meta property='og:url' content='https://reimunai.github.io/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/'>
+<link rel="stylesheet" href="/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="AsyncProgrammingInUnity">
+<meta property='og:description' content="unity中的异步编程入门。">
+<meta property='og:url' content='https://reimunai.github.io/p/asyncprogramminginunity/'>
 <meta property='og:site_name' content='无铃怎么系铃'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='json' /><meta property='article:tag' content='XML' /><meta property='article:tag' content='c#' /><meta property='article:tag' content='unity' /><meta property='article:published_time' content='2025-08-16T20:40:49&#43;08:00'/><meta property='article:modified_time' content='2025-08-16T20:40:49&#43;08:00'/><meta property='og:image' content='https://reimunai.github.io/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/image.png' />
-<meta name="twitter:title" content="Unity数据持久化存储">
-<meta name="twitter:description" content="在unity实现数据持久化存储。"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://reimunai.github.io/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/image.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='unity' /><meta property='article:tag' content='C#' /><meta property='article:published_time' content='2025-09-05T23:04:59&#43;08:00'/><meta property='article:modified_time' content='2025-09-05T23:04:59&#43;08:00'/><meta property='og:image' content='https://reimunai.github.io/p/asyncprogramminginunity/image.png' />
+<meta name="twitter:title" content="AsyncProgrammingInUnity">
+<meta name="twitter:description" content="unity中的异步编程入门。"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://reimunai.github.io/p/asyncprogramminginunity/image.png' />
     </head>
     <body class="
     article-page
@@ -246,22 +246,24 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#json方案">Json方案</a>
+    <li><a href="#引入">引入</a></li>
+    <li><a href="#unity协程">unity协程</a>
       <ol>
-        <li><a href="#简介">简介</a></li>
-        <li><a href="#方法">方法</a>
+        <li><a href="#语法">语法</a></li>
+        <li><a href="#局限">局限</a>
           <ol>
-            <li><a href="#文件读写">文件读写</a></li>
-            <li><a href="#存储位置">存储位置</a></li>
-            <li><a href="#转为json字符串">转为json字符串</a></li>
+            <li><a href="#使用范围">使用范围</a></li>
+            <li><a href="#生命周期问题">生命周期问题</a></li>
+            <li><a href="#性能问题">性能问题</a></li>
+            <li><a href="#功能实现局限">功能实现局限</a></li>
           </ol>
         </li>
-        <li><a href="#示例">示例</a></li>
-        <li><a href="#注意">注意</a>
-          <ol>
-            <li><a href="#限制">限制</a></li>
-          </ol>
-        </li>
+      </ol>
+    </li>
+    <li><a href="#c-task类">c# Task类</a>
+      <ol>
+        <li><a href="#基本用法">基本用法</a></li>
+        <li><a href="#task常用函数">Task常用函数</a></li>
       </ol>
     </li>
   </ol>
@@ -278,13 +280,13 @@
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/">
-                <img src="/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/image_hu_74243e52e0930c61.png"
-                        srcset="/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/image_hu_74243e52e0930c61.png 800w, /p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/image_hu_cbd1d7bb0559f131.png 1600w"
+            <a href="/p/asyncprogramminginunity/">
+                <img src="/p/asyncprogramminginunity/image_hu_74243e52e0930c61.png"
+                        srcset="/p/asyncprogramminginunity/image_hu_74243e52e0930c61.png 800w, /p/asyncprogramminginunity/image_hu_cbd1d7bb0559f131.png 1600w"
                         width="800" 
                         height="450" 
                         loading="lazy"
-                        alt="Featured image of post Unity数据持久化存储" />
+                        alt="Featured image of post AsyncProgrammingInUnity" />
                 
             </a>
         </div>
@@ -298,17 +300,21 @@
                 Unity
             </a>
         
+            <a href="/categories/c%23/" >
+                C#
+            </a>
+        
     </header>
     
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/">Unity数据持久化存储</a>
+            <a href="/p/asyncprogramminginunity/">AsyncProgrammingInUnity</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            在unity实现数据持久化存储。
+            unity中的异步编程入门。
         </h3>
         
     </div>
@@ -329,7 +335,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">2025-08-16</time>
+                <time class="article-time--published">2025-09-05</time>
             </div>
         
 
@@ -345,51 +351,102 @@
     <section class="article-content">
     
     
-    <h2 id="json方案">Json方案
-</h2><h3 id="简介">简介
-</h3><p>JSON: JavaScript Object Notation(JavaScript 对象表示法)<br>
-JSON是存储和交换文本信息的语法，类似 XML。JSON比 XML 更小、更快，更易解析。
-JSON易于人阅读和编写。C、Python、C++、Java、PHP、Go 等编程语言都支持 JSON。</p>
-<h3 id="方法">方法
-</h3><h4 id="文件读写">文件读写
-</h4><p>在unity进行<strong>json</strong>文件读写操作需要引入命名空间<strong>System.IO</strong>中的<strong>File</strong>类。使用其中相关静态函数。</p>
+    <h2 id="引入">引入
+</h2><p>在编写如延时操作，UI和其他动画控制，加载资源（场景，模型和贴图等），等待网络请求等操作时，需要将处理操作分布多帧中或者为了不阻塞主线程需要异步编程。考虑现在可能只需要简单延时操作，UI动画控制，加载等操作，先从unity的协程coroutine和C#的Task类考虑。</p>
+<h2 id="unity协程">unity协程
+</h2><p>首先需要知道unity的大部分游戏逻辑，输入处理和渲染都是在主线程处理处理，是单线程的。大部分API只能在主线程调用，子线程尝试调用可能有异常和未定义错误。而unity协程本质上也是在主线程上运行的，协程函数任务被分配到不同帧中处理。</p>
+<h3 id="语法">语法
+</h3><p>协程方法通过C#的迭代器关键字<strong>IEnumerator</strong>，定义一个返回迭代器的函数实现；并在函数体通过yiled return <strong>YieldInstruction</strong>(waitForSeconds,waitForFixedUpdate等的基类)暂停协程函数和决定什么时候恢复执行；最后通过StartCoroutine(<strong>IEnumerator</strong> routine)开始协程函数。<br>
+示例代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c#" data-lang="c#"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//协程是在MonoBehavour实现，只能在MonoBegaviour脚本中使用</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">TestExample</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">IEnumerator</span> <span class="n">Test</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="m">10</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="n">i</span> <span class="p">+</span> <span class="s">&#34; loop, in &#34;</span> <span class="p">+</span> <span class="n">Time</span><span class="p">.</span><span class="n">frameCount</span> <span class="p">+</span> <span class="s">&#34; frame.&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">yield</span> <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">Start</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">StartCoroutine</span><span class="p">(</span><span class="n">Test</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//最终输出：</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//0 loop, in 1 frame</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//1 loop, in 2 frame</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//2 loop, in 3 frame</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//...</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//3 loop, in 10 frame</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>yield return null即暂停后在下一帧执行。
+还可以使用：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
-</span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c#" data-lang="c#"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="c1">//写入</span>
-</span></span><span class="line"><span class="cl"><span class="n">File</span><span class="p">.</span><span class="n">WriteAllText</span><span class="p">(</span><span class="kt">string</span> <span class="n">path</span><span class="p">,</span> <span class="kt">string</span> <span class="n">text</span><span class="p">,</span> <span class="n">json</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="c1">//读取</span>
-</span></span><span class="line"><span class="cl"><span class="kt">string</span> <span class="n">json</span> <span class="p">=</span> <span class="n">File</span><span class="p">.</span><span class="n">ReadAllText</span><span class="p">(</span><span class="kt">string</span> <span class="n">path</span><span class="p">);</span>
+<pre tabindex="0" class="chroma"><code class="language-c#" data-lang="c#"><span class="line"><span class="cl"><span class="k">yield</span> <span class="k">return</span> <span class="k">new</span> <span class="n">WaitForSeconds</span><span class="p">(</span><span class="m">1</span><span class="p">);</span><span class="c1">//等待1秒，受到TimeScale影响。</span>
+</span></span><span class="line"><span class="cl"><span class="k">yield</span> <span class="k">return</span> <span class="k">new</span> <span class="n">WaitForSecondsRealTime</span><span class="p">(</span><span class="m">1</span><span class="p">);</span><span class="c1">//等待1秒，不受到TimeScale影响。</span>
+</span></span><span class="line"><span class="cl"><span class="k">yield</span> <span class="k">return</span> <span class="k">new</span> <span class="n">WaitForFixedUpdate</span><span class="p">();</span><span class="c1">//等待到下一次fixedUpdate执行。</span>
+</span></span><span class="line"><span class="cl"><span class="k">yield</span> <span class="k">return</span> <span class="n">StartCoroutine</span><span class="p">(</span><span class="n">anoTher</span> <span class="n">Coroutine</span><span class="p">);</span><span class="c1">//等待另一个协程执行完成后。</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h4 id="存储位置">存储位置
-</h4><p><strong>Application.persistentDataPath</strong><br>
-适用于保存需要长期保留的用户数据（如设置、进度、关卡数据等）。<br>
-在各平台上的实际路径不同，但都在应用可写的目录。</p>
-<h4 id="转为json字符串">转为json字符串
-</h4><p>将数据转换为Json字符串使用unity提供的类<strong>JsonUtility</strong>中的静态函数。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c#" data-lang="c#"><span class="line"><span class="cl"><span class="c1">//转换为json。</span>
-</span></span><span class="line"><span class="cl"><span class="kt">string</span> <span class="n">json</span> <span class="p">=</span> <span class="n">JsonUtility</span><span class="p">.</span><span class="n">ToJson</span><span class="p">(</span><span class="kt">object</span> <span class="n">obj</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">prettyPrint</span> <span class="p">=</span> <span class="kc">false</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="c1">//转换为对象。</span>
-</span></span><span class="line"><span class="cl"><span class="n">Data</span> <span class="n">data</span> <span class="p">=</span> <span class="n">JsonUtility</span><span class="p">.</span><span class="n">FromJson</span><span class="p">&lt;</span><span class="n">Data</span><span class="p">&gt;(</span><span class="kt">string</span> <span class="n">json</span><span class="p">);</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="示例">示例
+</div><h3 id="局限">局限
+</h3><h4 id="使用范围">使用范围
+</h4><p>协程只能在继承了<strong>MonoBehaviour</strong>的类在启动，依赖于组件类型脚本和场景中物体或者空物体。</p>
+<h4 id="生命周期问题">生命周期问题
+</h4><p>协程和挂载脚本的GamwObject绑定，对象销毁，协程停止而不会销毁。可能引发内存泄漏，空引用或者未知错误。</p>
+<h4 id="性能问题">性能问题
+</h4><p>yield return 时候频繁创建返回对象造成GC。<br>
+由于实际是在主线程上，过多协程还是会造成阻塞。<br>
+如果涉及到数据读取，yield return null不好把握一帧读取多少。因为单线程，一帧读取多会阻塞，少了浪费时间。</p>
+<h4 id="功能实现局限">功能实现局限
+</h4><p>协程函数无法返回值<br>
+协程函数不能使用try，catch进行错误捕获。</p>
+<h2 id="c-task类">c# Task类
+</h2><p>c# Task类是.Net框架下提供异步操作的核心类，基于Thread，ThreadPool的高度抽象。能够以直观，高效的方式编写异步，多线程代码，而不需要关心线程的生命周期，如创建，启动，暂停和恢复等。</p>
+<h3 id="基本用法">基本用法
 </h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -415,40 +472,62 @@ JSON易于人阅读和编写。C、Python、C++、Java、PHP、Go 等编程语�
 </span><span class="lnt">21
 </span><span class="lnt">22
 </span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c#" data-lang="c#"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="k">class</span> <span class="nc">JsonHelper</span>
+<pre tabindex="0" class="chroma"><code class="language-c#" data-lang="c#"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="kd">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">TestAsync</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="k">void</span> <span class="n">SaveJson</span><span class="p">(</span><span class="kt">string</span> <span class="n">path</span><span class="p">,</span> <span class="kt">object</span> <span class="n">obj</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="kt">string</span> <span class="n">finalPath</span> <span class="p">=</span> <span class="n">Application</span><span class="p">.</span><span class="n">persistentDataPath</span> <span class="p">+</span> <span class="s">&#34;/&#34;</span> <span class="p">+</span> <span class="n">path</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//或者string finalPath = Path.Combine(Application.persistentDataPath, path);</span>
-</span></span><span class="line"><span class="cl">        <span class="kt">string</span> <span class="n">jsonData</span> <span class="p">=</span> <span class="n">JsonUtility</span><span class="p">.</span><span class="n">ToJson</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//可以在write这里进行适当的错误处理</span>
-</span></span><span class="line"><span class="cl">        <span class="n">File</span><span class="p">.</span><span class="n">WriteAllText</span><span class="p">(</span><span class="n">finalPath</span><span class="p">,</span> <span class="n">jsonData</span><span class="p">,</span> <span class="n">json</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="n">T</span> <span class="n">LoadJson</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="kt">string</span> <span class="n">path</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="kt">string</span> <span class="n">finalPath</span> <span class="p">=</span> <span class="n">Application</span><span class="p">.</span><span class="n">persistentDataPath</span> <span class="p">+</span> <span class="s">&#34;/&#34;</span> <span class="p">+</span> <span class="n">path</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="n">File</span><span class="p">.</span><span class="n">Exists</span><span class="p">(</span><span class="n">finalPath</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">        <span class="p">{</span>
-</span></span><span class="line"><span class="cl">            <span class="kt">string</span> <span class="n">jsonData</span> <span class="p">=</span> <span class="n">File</span><span class="p">.</span><span class="n">ReadAllText</span><span class="p">(</span><span class="n">path</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">            <span class="c1">//担心转换的对象有问题可以在这里进行适当的错误处理。</span>
-</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">JsonUtility</span><span class="p">.</span><span class="n">FromJson</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">jsonData</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&#34;async Task start!&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">await</span> <span class="n">Task</span><span class="p">.</span><span class="n">Delay</span><span class="p">(</span><span class="m">3000</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s">&#34;Task completed! return result&#34;</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="kd">async</span> <span class="k">void</span> <span class="n">Start</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">string</span> <span class="n">res</span> <span class="p">=</span> <span class="k">await</span> <span class="n">TestAsync</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Debug</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s">&#34;res&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="k">void</span> <span class="n">Update</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Debug</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s">&#34;Update!&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//预期输出：</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//async Task start</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//Update!</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//Update:</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//.....</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//after 3s</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//Task completed! return result</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="注意">注意
-</h3><h4 id="限制">限制
-</h4><p><strong>JsonUtility.ToJson</strong>支持任何普通类和结构体，和派生自<strong>MonoBehaviour</strong>或<strong>scriptableOnject</strong>的类。且只支持其中unity受序列化器支持的字段。虽然可以将C#原始类型传入，但是只会在Json中生成空对象字段。<br>
-虽然<strong>ToJson</strong>方法支持派生自<strong>MonoBehaviour</strong>或<strong>scriptableOnject</strong>的类，但是<strong>JsonUtility.FromJson</strong>只支持创建普通类和结构；不支持派生自<strong>UnityEngine.Object</strong>的类（如<strong>MonoBehaviour</strong>或<strong>ScriptableObject</strong>）。<br>
-如果想从Json读取并创建或者覆写怕派生自<strong>UnityEngine.Object</strong>的类，可以额外创建一个只包含数据的普通类，再提供这个数据类进行对象的创建或者覆写。<br>
-或者想对更多数据类型的支持，如字典，列表等，可以使用其他的api如<strong>Newtonsoft.Json（Json.NET）</strong>— 适合更复杂的结构。<br>
-优点：支持字典、列表、嵌套对象等，序列化选项灵活。</p>
+</div><p>async关键字允许函数进行异步操作，即可以在函数中使用await关键字。当遇到需要等待另一个任务完成，使用await关键字会暂停函数将控制权返回到调用方，等待任务完成后再回到该异步函数。</p>
+<h3 id="task常用函数">Task常用函数
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c#" data-lang="c#"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Thread.Tasks</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Task</span><span class="p">.</span><span class="n">Run</span><span class="p">(</span><span class="n">Action</span> <span class="n">action</span><span class="p">);</span><span class="c1">//委托或者lambda函数表达式。</span>
+</span></span><span class="line"><span class="cl"><span class="n">Task</span><span class="p">.</span><span class="n">Delay</span><span class="p">(</span><span class="n">Int</span> <span class="n">time</span><span class="p">);</span><span class="c1">//创建在time秒后结束的任务。</span>
+</span></span><span class="line"><span class="cl"><span class="n">Task</span><span class="p">.</span><span class="n">WhenAll</span><span class="p">(</span><span class="n">Task</span><span class="p">[]</span> <span class="n">tasks</span><span class="p">)</span><span class="c1">//等待数组中所有任务完成。</span>
+</span></span><span class="line"><span class="cl"><span class="n">Task</span><span class="p">.</span><span class="n">WhenAny</span><span class="p">(</span><span class="n">Task</span><span class="p">[]</span> <span class="n">tasks</span><span class="p">)</span><span class="c1">//等待数组中任一任务完成。</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>除此以外还有其他高级用法，现阶段可能还用不上，等有更高级的需求在补充。</p>
 
 </section>
 
@@ -457,13 +536,9 @@ JSON易于人阅读和编写。C、Python、C++、Java、PHP、Go 等编程语�
     
     <section class="article-tags">
         
-            <a href="/tags/json/">Json</a>
-        
-            <a href="/tags/xml/">XML</a>
+            <a href="/tags/unity/">Unity</a>
         
             <a href="/tags/c%23/">C#</a>
-        
-            <a href="/tags/unity/">Unity</a>
         
     </section>
 
@@ -523,30 +598,6 @@ JSON易于人阅读和编写。C、Python、C++、Java、PHP、Go 等编程语�
             
                 
 <article class="has-image">
-    <a href="/p/asyncprogramminginunity/">
-        
-        
-            <div class="article-image">
-                <img src="/p/asyncprogramminginunity/image.f91557d4d9a4ea30c373c023e73c79d3_hu_5a858d22e3a4eff6.png" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post AsyncProgrammingInUnity"
-                        
-                        data-hash="md5-&#43;RVX1Nmk6jDDc8Aj5zx50w==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">AsyncProgrammingInUnity</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
     <a href="/p/csharp%E4%B8%AD%E7%9A%84%E5%A7%94%E6%89%98%E4%BA%8B%E4%BB%B6%E5%92%8Cunity%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B/">
         
         
@@ -564,6 +615,30 @@ JSON易于人阅读和编写。C、Python、C++、Java、PHP、Go 等编程语�
 
         <div class="article-details">
             <h2 class="article-title">Csharp中的委托，事件和Unity中的特殊事件类型</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/">
+        
+        
+            <div class="article-image">
+                <img src="/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/image.f91557d4d9a4ea30c373c023e73c79d3_hu_5a858d22e3a4eff6.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Unity数据持久化存储"
+                        
+                        data-hash="md5-&#43;RVX1Nmk6jDDc8Aj5zx50w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Unity数据持久化存储</h2>
         </div>
     </a>
 </article>
