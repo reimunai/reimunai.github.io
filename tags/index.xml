@@ -2,97 +2,97 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Tags on 无铃怎么系铃</title>
-        <link>https://reimunai.github.io/tags/</link>
+        <link>http://localhost:1313/tags/</link>
         <description>Recent content in Tags on 无铃怎么系铃</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>无铃怎么系铃-reimunai</copyright>
-        <lastBuildDate>Fri, 05 Sep 2025 23:04:59 +0800</lastBuildDate><atom:link href="https://reimunai.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 15 Nov 2025 16:49:10 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>C#</title>
-        <link>https://reimunai.github.io/tags/c%23/</link>
-        <pubDate>Fri, 05 Sep 2025 23:04:59 +0800</pubDate>
+        <link>http://localhost:1313/tags/c%23/</link>
+        <pubDate>Sat, 15 Nov 2025 16:49:10 +0800</pubDate>
         
-        <guid>https://reimunai.github.io/tags/c%23/</guid>
+        <guid>http://localhost:1313/tags/c%23/</guid>
         <description></description>
         </item>
         <item>
         <title>Unity</title>
-        <link>https://reimunai.github.io/tags/unity/</link>
-        <pubDate>Fri, 05 Sep 2025 23:04:59 +0800</pubDate>
+        <link>http://localhost:1313/tags/unity/</link>
+        <pubDate>Sat, 15 Nov 2025 16:49:10 +0800</pubDate>
         
-        <guid>https://reimunai.github.io/tags/unity/</guid>
+        <guid>http://localhost:1313/tags/unity/</guid>
         <description></description>
         </item>
         <item>
         <title>GLSL</title>
-        <link>https://reimunai.github.io/tags/glsl/</link>
+        <link>http://localhost:1313/tags/glsl/</link>
         <pubDate>Mon, 25 Aug 2025 17:45:23 +0800</pubDate>
         
-        <guid>https://reimunai.github.io/tags/glsl/</guid>
+        <guid>http://localhost:1313/tags/glsl/</guid>
         <description></description>
         </item>
         <item>
         <title>HTML</title>
-        <link>https://reimunai.github.io/tags/html/</link>
+        <link>http://localhost:1313/tags/html/</link>
         <pubDate>Mon, 25 Aug 2025 17:45:23 +0800</pubDate>
         
-        <guid>https://reimunai.github.io/tags/html/</guid>
+        <guid>http://localhost:1313/tags/html/</guid>
         <description></description>
         </item>
         <item>
         <title>Javascript</title>
-        <link>https://reimunai.github.io/tags/javascript/</link>
+        <link>http://localhost:1313/tags/javascript/</link>
         <pubDate>Mon, 25 Aug 2025 17:45:23 +0800</pubDate>
         
-        <guid>https://reimunai.github.io/tags/javascript/</guid>
+        <guid>http://localhost:1313/tags/javascript/</guid>
         <description></description>
         </item>
         <item>
         <title>Webgl2</title>
-        <link>https://reimunai.github.io/tags/webgl2/</link>
+        <link>http://localhost:1313/tags/webgl2/</link>
         <pubDate>Mon, 25 Aug 2025 17:45:23 +0800</pubDate>
         
-        <guid>https://reimunai.github.io/tags/webgl2/</guid>
+        <guid>http://localhost:1313/tags/webgl2/</guid>
         <description></description>
         </item>
         <item>
         <title>Hugo</title>
-        <link>https://reimunai.github.io/tags/hugo/</link>
+        <link>http://localhost:1313/tags/hugo/</link>
         <pubDate>Tue, 19 Aug 2025 13:13:05 +0800</pubDate>
         
-        <guid>https://reimunai.github.io/tags/hugo/</guid>
+        <guid>http://localhost:1313/tags/hugo/</guid>
         <description></description>
         </item>
         <item>
         <title>Json</title>
-        <link>https://reimunai.github.io/tags/json/</link>
+        <link>http://localhost:1313/tags/json/</link>
         <pubDate>Sat, 16 Aug 2025 20:40:49 +0800</pubDate>
         
-        <guid>https://reimunai.github.io/tags/json/</guid>
+        <guid>http://localhost:1313/tags/json/</guid>
         <description></description>
         </item>
         <item>
         <title>XML</title>
-        <link>https://reimunai.github.io/tags/xml/</link>
+        <link>http://localhost:1313/tags/xml/</link>
         <pubDate>Sat, 16 Aug 2025 20:40:49 +0800</pubDate>
         
-        <guid>https://reimunai.github.io/tags/xml/</guid>
+        <guid>http://localhost:1313/tags/xml/</guid>
         <description></description>
         </item>
         <item>
         <title>Shader</title>
-        <link>https://reimunai.github.io/tags/shader/</link>
+        <link>http://localhost:1313/tags/shader/</link>
         <pubDate>Sun, 10 Aug 2025 23:31:11 +0800</pubDate>
         
-        <guid>https://reimunai.github.io/tags/shader/</guid>
+        <guid>http://localhost:1313/tags/shader/</guid>
         <description></description>
         </item>
         <item>
         <title>Webgl</title>
-        <link>https://reimunai.github.io/tags/webgl/</link>
+        <link>http://localhost:1313/tags/webgl/</link>
         <pubDate>Sun, 10 Aug 2025 23:31:11 +0800</pubDate>
         
-        <guid>https://reimunai.github.io/tags/webgl/</guid>
+        <guid>http://localhost:1313/tags/webgl/</guid>
         <description></description>
         </item>
         

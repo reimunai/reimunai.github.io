@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>GLSL on 无铃怎么系铃</title>
-        <link>https://reimunai.github.io/tags/glsl/</link>
+        <link>http://localhost:1313/tags/glsl/</link>
         <description>Recent content in GLSL on 无铃怎么系铃</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>无铃怎么系铃-reimunai</copyright>
-        <lastBuildDate>Mon, 25 Aug 2025 17:45:23 +0800</lastBuildDate><atom:link href="https://reimunai.github.io/tags/glsl/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 25 Aug 2025 17:45:23 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/glsl/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>webgl实现简单粒子动画</title>
-        <link>https://reimunai.github.io/p/webgl%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%B2%92%E5%AD%90%E5%8A%A8%E7%94%BB/</link>
+        <link>http://localhost:1313/p/webgl%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%B2%92%E5%AD%90%E5%8A%A8%E7%94%BB/</link>
         <pubDate>Mon, 25 Aug 2025 17:45:23 +0800</pubDate>
         
-        <guid>https://reimunai.github.io/p/webgl%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%B2%92%E5%AD%90%E5%8A%A8%E7%94%BB/</guid>
+        <guid>http://localhost:1313/p/webgl%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%B2%92%E5%AD%90%E5%8A%A8%E7%94%BB/</guid>
         <description>&lt;h2 id=&#34;引入&#34;&gt;引入
 &lt;/h2&gt;&lt;p&gt;之前使用webgl实现的波浪效果，只要去除顶点之间连线，渲染顶点圆，其实也可以算是粒子动画。但是那样的方法对于复杂粒子系统动画就有点捉襟见肘了。对于波浪，我们使用不同频率正弦波叠加，传入uniform变量time给gpu。每个顶点都可以简单地计算出每时每刻的位置后，进行顶点变换再渲染。如果系统中粒子要实时响应外部因素变化(如受到速度属性，外部力属性，质量属性)，粒子存在相互作用(碰撞，引力)和模型复杂的时候，我们更希望根据上次粒子的位置，速度属性，递推计算粒子位置变换。这时候就可以使用webgl2的transform feedback功能，将前一帧的位置计算结果写入缓冲区供下一帧计算使用。&lt;/p&gt;
 &lt;h2 id=&#34;关于webgl2&#34;&gt;关于webgl2
@@ -368,10 +368,10 @@ webgl2有许多新的特性可以使用，这里主要变换反馈对象transfor
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;效果(cameraZ为0有bug)
-&lt;img src=&#34;https://reimunai.github.io/p/webgl%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%B2%92%E5%AD%90%E5%8A%A8%E7%94%BB/image.png&#34;
+&lt;img src=&#34;http://localhost:1313/p/webgl%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%B2%92%E5%AD%90%E5%8A%A8%E7%94%BB/image.png&#34;
 	width=&#34;1718&#34;
 	height=&#34;731&#34;
-	srcset=&#34;https://reimunai.github.io/p/webgl%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%B2%92%E5%AD%90%E5%8A%A8%E7%94%BB/image_hu_975d9fa4a770c39c.png 480w, https://reimunai.github.io/p/webgl%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%B2%92%E5%AD%90%E5%8A%A8%E7%94%BB/image_hu_7d8d112ea15371c1.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/p/webgl%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%B2%92%E5%AD%90%E5%8A%A8%E7%94%BB/image_hu_975d9fa4a770c39c.png 480w, http://localhost:1313/p/webgl%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%B2%92%E5%AD%90%E5%8A%A8%E7%94%BB/image_hu_7d8d112ea15371c1.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;alt text&#34;
@@ -384,7 +384,7 @@ webgl2有许多新的特性可以使用，这里主要变换反馈对象transfor
 &gt;
 &lt;div class=&#34;custom-iframe-container&#34;&gt;
     &lt;iframe 
-        src=&#34;https://reimunai.github.io/webgl/particle.html&#34; 
+        src=&#34;http://localhost:1313/webgl/particle.html&#34; 
         width=&#34;100%&#34; 
         height=&#34;500&#34; 
         frameborder=&#34;0&#34;
@@ -397,11 +397,11 @@ webgl2有许多新的特性可以使用，这里主要变换反馈对象transfor
         </item>
         <item>
         <title>webgl渲染水面波浪</title>
-        <link>https://reimunai.github.io/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/</link>
+        <link>http://localhost:1313/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/</link>
         <pubDate>Sun, 10 Aug 2025 23:31:11 +0800</pubDate>
         
-        <guid>https://reimunai.github.io/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/</guid>
-        <description>&lt;img src="https://reimunai.github.io/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image-3.png" alt="Featured image of post webgl渲染水面波浪" /&gt;&lt;h2 id=&#34;场景中物体类的编写&#34;&gt;场景中物体类的编写
+        <guid>http://localhost:1313/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/</guid>
+        <description>&lt;img src="http://localhost:1313/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image-3.png" alt="Featured image of post webgl渲染水面波浪" /&gt;&lt;h2 id=&#34;场景中物体类的编写&#34;&gt;场景中物体类的编写
 &lt;/h2&gt;&lt;h3 id=&#34;相机&#34;&gt;相机
 &lt;/h3&gt;&lt;p&gt;定义相机类，包含其位置，观察位置，向上方向的属性。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -967,10 +967,10 @@ webgl中面按三角面渲染，顶点数据会有重复顶点。其实可以通
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h2 id=&#34;最终效果&#34;&gt;最终效果
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://reimunai.github.io/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image.png&#34;
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image.png&#34;
 	width=&#34;1908&#34;
 	height=&#34;1008&#34;
-	srcset=&#34;https://reimunai.github.io/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image_hu_eaf4be86bcc3694b.png 480w, https://reimunai.github.io/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image_hu_778d5d8529f192c0.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image_hu_eaf4be86bcc3694b.png 480w, http://localhost:1313/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image_hu_778d5d8529f192c0.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;仅渲染线条&#34;
@@ -981,10 +981,10 @@ webgl中面按三角面渲染，顶点数据会有重复顶点。其实可以通
 		data-flex-basis=&#34;454px&#34;
 	
 &gt;&lt;br&gt;
-&lt;img src=&#34;https://reimunai.github.io/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image-1.png&#34;
+&lt;img src=&#34;http://localhost:1313/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image-1.png&#34;
 	width=&#34;1908&#34;
 	height=&#34;1008&#34;
-	srcset=&#34;https://reimunai.github.io/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image-1_hu_ddd913ecb15306fa.png 480w, https://reimunai.github.io/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image-1_hu_bd176d64ef0e0cfa.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image-1_hu_ddd913ecb15306fa.png 480w, http://localhost:1313/p/webgl%E6%B8%B2%E6%9F%93%E6%B0%B4%E9%9D%A2%E6%B3%A2%E6%B5%AA/image-1_hu_bd176d64ef0e0cfa.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;渲染三角面&#34;

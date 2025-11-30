@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="在unity实现数据持久化存储。">
-<title>Unity数据持久化存储</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="引入 简介 UnityWebRequest 对象用于与 Web 服务器进行通信。 UnityWebRequest 处理 HTTP 与 Web 服务器进行通信的流程。其他对象 - 特别是 DownloadHandler 和 UploadHandler - 分别管理数据的下 和上传。\n&ndash;来自unity文档\n">
+<title>UnityWebRequest</title>
 
-<link rel='canonical' href='http://localhost:1313/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/'>
+<link rel='canonical' href='http://localhost:1313/p/unitywebrequest/'>
 
-<link rel="stylesheet" href="/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="Unity数据持久化存储">
-<meta property='og:description' content="在unity实现数据持久化存储。">
-<meta property='og:url' content='http://localhost:1313/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/'>
+<link rel="stylesheet" href="/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="UnityWebRequest">
+<meta property='og:description' content="引入 简介 UnityWebRequest 对象用于与 Web 服务器进行通信。 UnityWebRequest 处理 HTTP 与 Web 服务器进行通信的流程。其他对象 - 特别是 DownloadHandler 和 UploadHandler - 分别管理数据的下 和上传。\n&ndash;来自unity文档\n">
+<meta property='og:url' content='http://localhost:1313/p/unitywebrequest/'>
 <meta property='og:site_name' content='无铃怎么系铃'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='json' /><meta property='article:tag' content='XML' /><meta property='article:tag' content='c#' /><meta property='article:tag' content='unity' /><meta property='article:published_time' content='2025-08-16T20:40:49&#43;08:00'/><meta property='article:modified_time' content='2025-08-16T20:40:49&#43;08:00'/><meta property='og:image' content='http://localhost:1313/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/image.png' />
-<meta name="twitter:title" content="Unity数据持久化存储">
-<meta name="twitter:description" content="在unity实现数据持久化存储。"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='http://localhost:1313/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/image.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='unity' /><meta property='article:tag' content='C#' /><meta property='article:published_time' content='2025-11-15T16:49:10&#43;08:00'/><meta property='article:modified_time' content='2025-11-15T16:49:10&#43;08:00'/>
+<meta name="twitter:title" content="UnityWebRequest">
+<meta name="twitter:description" content="引入 简介 UnityWebRequest 对象用于与 Web 服务器进行通信。 UnityWebRequest 处理 HTTP 与 Web 服务器进行通信的流程。其他对象 - 特别是 DownloadHandler 和 UploadHandler - 分别管理数据的下 和上传。\n&ndash;来自unity文档\n">
     </head>
     <body class="
     article-page
@@ -246,24 +245,9 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#json方案">Json方案</a>
-      <ol>
-        <li><a href="#简介">简介</a></li>
-        <li><a href="#方法">方法</a>
-          <ol>
-            <li><a href="#文件读写">文件读写</a></li>
-            <li><a href="#存储位置">存储位置</a></li>
-            <li><a href="#转为json字符串">转为json字符串</a></li>
-          </ol>
-        </li>
-        <li><a href="#示例">示例</a></li>
-        <li><a href="#注意">注意</a>
-          <ol>
-            <li><a href="#限制">限制</a></li>
-          </ol>
-        </li>
-      </ol>
-    </li>
+    <li><a href="#引入">引入</a></li>
+    <li><a href="#简介">简介</a></li>
+    <li><a href="#基本用法示例">基本用法示例</a></li>
   </ol>
 </nav>
         </div>
@@ -275,20 +259,8 @@
 
 
             <main class="main full-width">
-    <article class="has-image main-article">
+    <article class="main-article">
     <header class="article-header">
-        <div class="article-image">
-            <a href="/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/">
-                <img src="/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/image_hu_74243e52e0930c61.png"
-                        srcset="/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/image_hu_74243e52e0930c61.png 800w, /p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/image_hu_cbd1d7bb0559f131.png 1600w"
-                        width="800" 
-                        height="450" 
-                        loading="lazy"
-                        alt="Featured image of post Unity数据持久化存储" />
-                
-            </a>
-        </div>
-    
 
     <div class="article-details">
     
@@ -298,18 +270,18 @@
                 Unity
             </a>
         
+            <a href="/categories/c%23/" >
+                C#
+            </a>
+        
     </header>
     
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/">Unity数据持久化存储</a>
+            <a href="/p/unitywebrequest/">UnityWebRequest</a>
         </h2>
     
-        
-        <h3 class="article-subtitle">
-            在unity实现数据持久化存储。
-        </h3>
         
     </div>
 
@@ -329,7 +301,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">2025-08-16</time>
+                <time class="article-time--published">2025-11-15</time>
             </div>
         
 
@@ -345,52 +317,15 @@
     <section class="article-content">
     
     
-    <h2 id="json方案">Json方案
-</h2><h3 id="简介">简介
-</h3><p>JSON: JavaScript Object Notation(JavaScript 对象表示法)<br>
-JSON是存储和交换文本信息的语法，类似 XML。JSON比 XML 更小、更快，更易解析。
-JSON易于人阅读和编写。C、Python、C++、Java、PHP、Go 等编程语言都支持 JSON。</p>
-<h3 id="方法">方法
-</h3><h4 id="文件读写">文件读写
-</h4><p>在unity进行<strong>json</strong>文件读写操作需要引入命名空间<strong>System.IO</strong>中的<strong>File</strong>类。使用其中相关静态函数。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c#" data-lang="c#"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="c1">//写入</span>
-</span></span><span class="line"><span class="cl"><span class="n">File</span><span class="p">.</span><span class="n">WriteAllText</span><span class="p">(</span><span class="kt">string</span> <span class="n">path</span><span class="p">,</span> <span class="kt">string</span> <span class="n">text</span><span class="p">,</span> <span class="n">json</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="c1">//读取</span>
-</span></span><span class="line"><span class="cl"><span class="kt">string</span> <span class="n">json</span> <span class="p">=</span> <span class="n">File</span><span class="p">.</span><span class="n">ReadAllText</span><span class="p">(</span><span class="kt">string</span> <span class="n">path</span><span class="p">);</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h4 id="存储位置">存储位置
-</h4><p><strong>Application.persistentDataPath</strong><br>
-适用于保存需要长期保留的用户数据（如设置、进度、关卡数据等）。<br>
-在各平台上的实际路径不同，但都在应用可写的目录。</p>
-<h4 id="转为json字符串">转为json字符串
-</h4><p>将数据转换为Json字符串使用unity提供的类<strong>JsonUtility</strong>中的静态函数。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c#" data-lang="c#"><span class="line"><span class="cl"><span class="c1">//转换为json。</span>
-</span></span><span class="line"><span class="cl"><span class="kt">string</span> <span class="n">json</span> <span class="p">=</span> <span class="n">JsonUtility</span><span class="p">.</span><span class="n">ToJson</span><span class="p">(</span><span class="kt">object</span> <span class="n">obj</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">prettyPrint</span> <span class="p">=</span> <span class="kc">false</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="c1">//转换为对象。</span>
-</span></span><span class="line"><span class="cl"><span class="n">Data</span> <span class="n">data</span> <span class="p">=</span> <span class="n">JsonUtility</span><span class="p">.</span><span class="n">FromJson</span><span class="p">&lt;</span><span class="n">Data</span><span class="p">&gt;(</span><span class="kt">string</span> <span class="n">json</span><span class="p">);</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="示例">示例
-</h3><div class="highlight"><div class="chroma">
+    <h2 id="引入">引入
+</h2><h2 id="简介">简介
+</h2><blockquote>
+<p>UnityWebRequest 对象用于与 Web 服务器进行通信。
+UnityWebRequest 处理 HTTP 与 Web 服务器进行通信的流程。其他对象 - 特别是 DownloadHandler 和 UploadHandler - 分别管理数据的下
+和上传。</p>
+<p>&ndash;来自unity文档</p></blockquote>
+<h2 id="基本用法示例">基本用法示例
+</h2><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -415,40 +350,116 @@ JSON易于人阅读和编写。C、Python、C++、Java、PHP、Go 等编程语�
 </span><span class="lnt">21
 </span><span class="lnt">22
 </span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c#" data-lang="c#"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="k">class</span> <span class="nc">JsonHelper</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="k">void</span> <span class="n">SaveJson</span><span class="p">(</span><span class="kt">string</span> <span class="n">path</span><span class="p">,</span> <span class="kt">object</span> <span class="n">obj</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="kt">string</span> <span class="n">finalPath</span> <span class="p">=</span> <span class="n">Application</span><span class="p">.</span><span class="n">persistentDataPath</span> <span class="p">+</span> <span class="s">&#34;/&#34;</span> <span class="p">+</span> <span class="n">path</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//或者string finalPath = Path.Combine(Application.persistentDataPath, path);</span>
-</span></span><span class="line"><span class="cl">        <span class="kt">string</span> <span class="n">jsonData</span> <span class="p">=</span> <span class="n">JsonUtility</span><span class="p">.</span><span class="n">ToJson</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//可以在write这里进行适当的错误处理</span>
-</span></span><span class="line"><span class="cl">        <span class="n">File</span><span class="p">.</span><span class="n">WriteAllText</span><span class="p">(</span><span class="n">finalPath</span><span class="p">,</span> <span class="n">jsonData</span><span class="p">,</span> <span class="n">json</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+<pre tabindex="0" class="chroma"><code class="language-c#" data-lang="c#"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">system.Collections</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">UnityEngine.Networking</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="n">T</span> <span class="n">LoadJson</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="kt">string</span> <span class="n">path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 下载文本数据</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//using 语法是为了确保这些对象在不再需要时能够及时释放资源。</span>
+</span></span><span class="line"><span class="cl"><span class="n">Ienumertor</span> <span class="n">DownloadText</span><span class="p">(</span><span class="kt">string</span> <span class="n">url</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">using</span><span class="p">(</span><span class="n">UnityWebRequest</span> <span class="n">request</span> <span class="p">=</span> <span class="n">UnityWebRequest</span><span class="p">.</span><span class="n">Get</span><span class="p">(</span><span class="n">url</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="kt">string</span> <span class="n">finalPath</span> <span class="p">=</span> <span class="n">Application</span><span class="p">.</span><span class="n">persistentDataPath</span> <span class="p">+</span> <span class="s">&#34;/&#34;</span> <span class="p">+</span> <span class="n">path</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="n">File</span><span class="p">.</span><span class="n">Exists</span><span class="p">(</span><span class="n">finalPath</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="k">yield</span> <span class="k">return</span> <span class="n">request</span><span class="p">.</span><span class="n">SendWebRequest</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="n">request</span><span class="p">.</span><span class="n">result</span> <span class="p">==</span> <span class="n">UnityWebRequest</span><span class="p">.</span><span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="p">{</span>
-</span></span><span class="line"><span class="cl">            <span class="kt">string</span> <span class="n">jsonData</span> <span class="p">=</span> <span class="n">File</span><span class="p">.</span><span class="n">ReadAllText</span><span class="p">(</span><span class="n">path</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">            <span class="c1">//担心转换的对象有问题可以在这里进行适当的错误处理。</span>
-</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">JsonUtility</span><span class="p">.</span><span class="n">FromJson</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">jsonData</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">string</span> <span class="n">text</span> <span class="p">=</span> <span class="n">request</span><span class="p">.</span><span class="n">downloadHandler</span><span class="p">.</span><span class="n">text</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Debug</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s">&#34;Download success: &#34;</span> <span class="p">+</span> <span class="n">text</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 下载文件并保存</span>
+</span></span><span class="line"><span class="cl"><span class="n">IEnumerator</span> <span class="n">DownloadFile</span><span class="p">(</span><span class="kt">string</span> <span class="n">url</span><span class="p">,</span> <span class="kt">string</span> <span class="n">savePath</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">using</span><span class="p">(</span><span class="n">UnityWebRequest</span> <span class="n">request</span> <span class="p">=</span> <span class="n">UnityWebRequest</span><span class="p">.</span><span class="n">Get</span><span class="p">(</span><span class="n">url</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">request</span><span class="p">.</span><span class="n">downloadHandler</span> <span class="p">=</span> <span class="k">new</span> <span class="n">DownloadHandlerFile</span><span class="p">(</span><span class="n">savePath</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">yield</span> <span class="k">return</span> <span class="n">request</span><span class="p">.</span><span class="n">SendWebRequest</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 上传表单数据</span>
+</span></span><span class="line"><span class="cl"><span class="n">IEnumerator</span> <span class="n">UploadData</span><span class="p">(</span><span class="kt">string</span> <span class="n">url</span><span class="p">,</span> <span class="kt">string</span> <span class="n">data</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">using</span><span class="p">(</span><span class="n">UnityWebRequest</span> <span class="n">request</span> <span class="p">=</span> <span class="n">UnityWebRequest</span><span class="p">.</span><span class="n">Post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">))</span> 
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">byte</span><span class="p">[]</span> <span class="n">jsonToSend</span> <span class="p">=</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">.</span><span class="n">GetBytes</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">request</span><span class="p">.</span><span class="n">uploadHandler</span> <span class="p">=</span> <span class="k">new</span> <span class="n">UploadHandlerRaw</span><span class="p">(</span><span class="n">jsonToSend</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">request</span><span class="p">.</span><span class="n">downloadHandler</span> <span class="p">=</span> <span class="k">new</span> <span class="n">DownloadHandlerBuffer</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">request</span><span class="p">.</span><span class="n">SetRequestHeader</span><span class="p">(</span><span class="s">&#34;Content-Type&#34;</span><span class="p">,</span> <span class="s">&#34;application/json&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">yield</span> <span class="k">return</span> <span class="n">request</span><span class="p">.</span><span class="n">SendWebRequest</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="注意">注意
-</h3><h4 id="限制">限制
-</h4><p><strong>JsonUtility.ToJson</strong>支持任何普通类和结构体，和派生自<strong>MonoBehaviour</strong>或<strong>scriptableOnject</strong>的类。且只支持其中unity受序列化器支持的字段。虽然可以将C#原始类型传入，但是只会在Json中生成空对象字段。<br>
-虽然<strong>ToJson</strong>方法支持派生自<strong>MonoBehaviour</strong>或<strong>scriptableOnject</strong>的类，但是<strong>JsonUtility.FromJson</strong>只支持创建普通类和结构；不支持派生自<strong>UnityEngine.Object</strong>的类（如<strong>MonoBehaviour</strong>或<strong>ScriptableObject</strong>）。<br>
-如果想从Json读取并创建或者覆写怕派生自<strong>UnityEngine.Object</strong>的类，可以额外创建一个只包含数据的普通类，再提供这个数据类进行对象的创建或者覆写。<br>
-或者想对更多数据类型的支持，如字典，列表等，可以使用其他的api如<strong>Newtonsoft.Json（Json.NET）</strong>— 适合更复杂的结构。<br>
-优点：支持字典、列表、嵌套对象等，序列化选项灵活。</p>
+</div><p>常通过以下途径创建<strong>UnityWebRequest</strong>对象</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c#" data-lang="c#"><span class="line"><span class="cl"><span class="c1">//构造函数，method表示HTTP协议的GET, Post, PUT,不附加method和handler默认为GET method</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="n">UnityWebRequest</span> <span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="n">UnityWebRequest</span> <span class="p">(</span><span class="kt">string</span> <span class="n">url</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="n">UnityWebRequest</span> <span class="p">(</span><span class="kt">string</span> <span class="n">url</span><span class="p">,</span> <span class="kt">string</span> <span class="n">method</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="n">UnityWebRequest</span> <span class="p">(</span><span class="kt">string</span> <span class="n">url</span><span class="p">,</span> <span class="kt">string</span> <span class="n">method</span><span class="p">,</span> <span class="n">Networking</span><span class="p">.</span><span class="n">DownloadHandler</span> <span class="n">downloadHandler</span><span class="p">,</span> <span class="n">Networking</span><span class="p">.</span><span class="n">UploadHandler</span> <span class="n">uploadHandler</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//通过静态函数返回</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//这些函数可返回针对许多常见用例相应配置的 UnityWebRequest 对象。请参阅：Get、Post、Put、GetTexture。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="n">Networking</span><span class="p">.</span><span class="n">UnityWebRequest</span> <span class="n">Get</span> <span class="p">(</span><span class="kt">string</span> <span class="n">uri</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//发送 HTTP HEAD 请求的 UnityWebRequest</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="n">Networking</span><span class="p">.</span><span class="n">UnityWebRequest</span> <span class="n">Head</span> <span class="p">(</span><span class="kt">string</span> <span class="n">uri</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//将原始数据上传到远程服务器的 UnityWebRequest</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="n">Networking</span><span class="p">.</span><span class="n">UnityWebRequest</span> <span class="n">Post</span> <span class="p">(</span><span class="kt">string</span> <span class="n">uri</span><span class="p">,</span> <span class="kt">string</span> <span class="n">postData</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//向 uri 传输 bodyData的 UnityWebRequest</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="n">Networking</span><span class="p">.</span><span class="n">UnityWebRequest</span> <span class="n">Put</span> <span class="p">(</span><span class="kt">string</span> <span class="n">uri</span><span class="p">,</span> <span class="kt">byte</span><span class="p">[]</span> <span class="n">bodyData</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="n">Networking</span><span class="p">.</span><span class="n">UnityWebRequest</span> <span class="n">Put</span> <span class="p">(</span><span class="kt">string</span> <span class="n">uri</span><span class="p">,</span> <span class="kt">string</span> <span class="n">bodyData</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以发现<strong>UnityWebRequest</strong>包含一些重要变量，常用的是<strong>downloadHandler</strong>和<strong>uploadHandler</strong>类的引用,定义如何处理从远程服务器接收的 HTTP 响应体数据。<br>
+还有之后的<strong>request.SendWebRequest()<strong>向url发送请求的方法。这里一般用</strong>yield return</strong>等待请求完成，防止阻塞主线程。</p>
 
 </section>
 
@@ -457,13 +468,9 @@ JSON易于人阅读和编写。C、Python、C++、Java、PHP、Go 等编程语�
     
     <section class="article-tags">
         
-            <a href="/tags/json/">Json</a>
-        
-            <a href="/tags/xml/">XML</a>
+            <a href="/tags/unity/">Unity</a>
         
             <a href="/tags/c%23/">C#</a>
-        
-            <a href="/tags/unity/">Unity</a>
         
     </section>
 
@@ -522,19 +529,6 @@ JSON易于人阅读和编写。C、Python、C++、Java、PHP、Go 等编程语�
         <div class="flex article-list--tile">
             
                 
-<article class="">
-    <a href="/p/unitywebrequest/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">UnityWebRequest</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
 <article class="has-image">
     <a href="/p/asyncprogramminginunity/">
         
@@ -577,6 +571,30 @@ JSON易于人阅读和编写。C、Python、C++、Java、PHP、Go 等编程语�
 
         <div class="article-details">
             <h2 class="article-title">Csharp中的委托，事件和Unity中的特殊事件类型</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/">
+        
+        
+            <div class="article-image">
+                <img src="/p/unity%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8/image.f91557d4d9a4ea30c373c023e73c79d3_hu_5a858d22e3a4eff6.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Unity数据持久化存储"
+                        
+                        data-hash="md5-&#43;RVX1Nmk6jDDc8Aj5zx50w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Unity数据持久化存储</h2>
         </div>
     </a>
 </article>

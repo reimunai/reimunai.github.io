@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>碎碎念 on 无铃怎么系铃</title>
-        <link>https://reimunai.github.io/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/</link>
+        <link>http://localhost:1313/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/</link>
         <description>Recent content in 碎碎念 on 无铃怎么系铃</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>无铃怎么系铃-reimunai</copyright>
-        <lastBuildDate>Tue, 19 Aug 2025 13:13:05 +0800</lastBuildDate><atom:link href="https://reimunai.github.io/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 19 Aug 2025 13:13:05 +0800</lastBuildDate><atom:link href="http://localhost:1313/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>关于hugo的一些碎碎念</title>
-        <link>https://reimunai.github.io/p/%E5%85%B3%E4%BA%8Ehugo%E7%9A%84%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/</link>
+        <link>http://localhost:1313/p/%E5%85%B3%E4%BA%8Ehugo%E7%9A%84%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/</link>
         <pubDate>Tue, 19 Aug 2025 13:13:05 +0800</pubDate>
         
-        <guid>https://reimunai.github.io/p/%E5%85%B3%E4%BA%8Ehugo%E7%9A%84%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/</guid>
-        <description>&lt;img src="https://reimunai.github.io/p/%E5%85%B3%E4%BA%8Ehugo%E7%9A%84%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/image.png" alt="Featured image of post 关于hugo的一些碎碎念" /&gt;&lt;p&gt;之前写关于C#的博客发现在对应markdown文档里插入图片，在构建成静态网站后并不能加载出来。&lt;br&gt;
+        <guid>http://localhost:1313/p/%E5%85%B3%E4%BA%8Ehugo%E7%9A%84%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/</guid>
+        <description>&lt;img src="http://localhost:1313/p/%E5%85%B3%E4%BA%8Ehugo%E7%9A%84%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/image.png" alt="Featured image of post 关于hugo的一些碎碎念" /&gt;&lt;p&gt;之前写关于C#的博客发现在对应markdown文档里插入图片，在构建成静态网站后并不能加载出来。&lt;br&gt;
 先是重新构建，不行。&lt;br&gt;
 改变图片格式，不行。&lt;br&gt;
 &amp;hellip;&lt;br&gt;
